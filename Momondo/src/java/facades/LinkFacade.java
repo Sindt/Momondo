@@ -38,16 +38,15 @@ public class LinkFacade {
         return l;
     }
 
-    public Link getLink(int id) {
-        Link l = null;
+    public Link getLink(Long id) {
         EntityManager em = emf.createEntityManager();
         try {
-            l = em.find(Link.class, id);
-        } catch (Exception e) {
+            Link l = em.find(Link.class, id);
+            return l;
         } finally {
             em.close();
         }
-        return l;
+
     }
 
     public List<Link> getAllLinks() {
