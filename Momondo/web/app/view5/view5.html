@@ -1,67 +1,115 @@
 <div ng-controller="View5Ctrl as ctrl">
 
-<h1>CCK - Xmondo</h1>
+    <h1>CCK - Xmondo</h1>
 
-<div>
-    <table style="margin-top: 80px; width: 65%; border-spacing: 0;">
-        <tr>
-            <td class="columnCubeBackgroundLeftTop">
-                <p>Traveling from:</p>
-            </td>
-            <td class="columnCubeBackgroundMiddleTop">
-            </td>
-            <td class="columnCubeBackgroundMiddleTop">
-                <p>Traveling to:</p>
-            </td>
-            <td class="columnCubeBackgroundMiddleTop">
-                <p>Travel date:</p>
-            </td>
-            <td class="columnCubeBackgroundMiddleTop">
-            </td>
-            <td class="columnCubeBackgroundRightTop">
-            </td>
-        </tr>
-        <tr>
-            <td class="columnCubeBackgroundLeftBottom">
-                <input type="text" style="width:10em;" placeholder="Insert city"
-                       ng-model="INSERT.VARIABLE1">
-            </td>
-            <td class="columnCubeBackgroundMiddleBottom"> 
-                <button class="btn btn-primary navbar-btn" style="padding: 1px 12px 1px 12px;" ng-click="swapDestination()">&harr;</button>
-            </td>
-            <td class="columnCubeBackgroundMiddleBottom">
-                <input type="text" style="width:10em;" placeholder="Insert city"
-                       ng-model="INSERT.VARIABLE2">
-            </td>
-            <td class="columnCubeBackgroundMiddleBottom">
-                <input type="date" ng-model="INSERT.VARIABLE3">
-            </td>
-            <td class="columnCubeBackgroundMiddleBottom">
-                <select ng-model="">
-                    <option value="1">1 Passenger</option>
-                    <option value="2">2 Passengers</option>
-                    <option value="3">3 Passengers</option>
-                    <option value="4">4 Passengers</option>
-                    <option value="5">5 Passengers</option>
-                    <option value="6">6 Passengers</option>
-                    <option value="7">7 Passengers</option>
-                    <option value="8">8 Passengers</option> 
-                </select>
-            </td>
-            <td class="columnCubeBackgroundRightBottom">
-                <button type="submit" class="btn btn-primary navbar-btn" ng-click="getAllFlightinfo()">Search
-              </button>
-            </td>
-        </tr>
-    </table>
-</div>
+    <div>
+        <table style="margin-top: 80px; width: 65%; border-spacing: 0;">
+            <tr>
+                <td class="columnCubeBackgroundLeftTop">
+                    <p>Traveling from:</p>
+                </td>
+                <td class="columnCubeBackgroundMiddleTop">
+                </td>
+                <td class="columnCubeBackgroundMiddleTop">
+                    <p>Traveling to:</p>
+                </td>
+                <td class="columnCubeBackgroundMiddleTop">
+                    <p>Travel date:</p>
+                </td>
+                <td class="columnCubeBackgroundMiddleTop">
+                </td>
+                <td class="columnCubeBackgroundRightTop">
+                </td>
+            </tr>
+            <tr>
+                <td class="columnCubeBackgroundLeftBottom">
+                    <input type="text" style="width:10em;" placeholder="Insert city">
+                </td>
+                <td class="columnCubeBackgroundMiddleBottom"> 
+                    <button class="btn btn-primary navbar-btn" style="padding: 1px 12px 1px 12px;" ng-click="swapDestination()">&harr;</button>
+                </td>
+                <td class="columnCubeBackgroundMiddleBottom">
+                    <input type="text" style="width:10em;" placeholder="Insert city">
+                </td>
+                <td class="columnCubeBackgroundMiddleBottom">
+                    <input type="date">
+                </td>
+                <td class="columnCubeBackgroundMiddleBottom">
+                    <select>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                        <option value="6">6 Passengers</option>
+                        <option value="7">7 Passengers</option>
+                        <option value="8">8 Passengers</option> 
+                    </select>
+                </td>
+                <td class="columnCubeBackgroundRightBottom">
+                    <button type="submit" class="btn btn-primary navbar-btn" ng-click="getAllFlightinfo()">Search
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-<div >
-    <uib-accordion>
-        <uib-accordion-group ng-repeat="flights in ctrl.data" heading={{flights.id}} >
-            
-        </uib-accordion-group>  
-    </uib-accordion>
-    
-</div>
+    <div> 
+        
+        <br>
+        <br>
+        <br>
+<!--        <table style="border-spacing: 2px">
+            <tr ng-repeat="flight in ctrl.data.flights">
+                <td> Number of seats: {{flight.numberOfSeats}} </td>
+                <td><p> </p></td>
+                <td> Flight date: {{flight.date}} </td>
+                <td><p> </p> </td>
+                <td> Price: {{flight.totalPrice}} </td>
+                <td><p> </p> </td>
+                <td> Flight ID: {{flight.flightId}} </td>
+                <td><p> </p> </td>
+                <td> Travel time: {{flight.traveltime}} </td>
+                <td><p> </p></td>
+                <td> Destination: {{flight.destination}} </td>
+                <td><p> </p></td>
+                <td> Origin: {{flight.origin}} </td>
+            </tr>
+        </table>-->
+
+
+        <uib-accordion>
+            <uib-accordion-group ng-repeat="flight in ctrl.data.flights" >
+                <uib-accordion-heading>       
+                    <table style="width: 100%; border-spacing: 0;">
+                        <tr>
+                            <td>
+                                {{flight.origin}} &rarr; {{flight.destination}}
+                            </td>
+                            <td>
+                                {{flight.date}}  
+                            </td>
+                            <td>
+                                Price: {{flight.totalPrice}}
+                            </td>
+
+                        </tr>
+                    </table>    
+                </uib-accordion-heading>
+
+                <uib-accordion-body>
+                    <p>Flight: {{flight.flightID}}</p>
+                    <p>Travel time: {{flight.traveltime}} minutes</p>
+                    <p>Number of seats: {{flight.numberOfSeats}}</p>
+                    
+                    <a href="#/view6" class="btn btn-danger">Book flight</a>
+                    
+                </uib-accordion-body>
+
+
+
+            </uib-accordion-group>  
+        </uib-accordion>
+
+    </div>
 </div>

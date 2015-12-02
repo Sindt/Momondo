@@ -1,5 +1,4 @@
 'use strict';
-
 angular.module('myApp.view5', ['ngRoute'])
 
         .config(['$routeProvider', function ($routeProvider) {
@@ -12,15 +11,15 @@ angular.module('myApp.view5', ['ngRoute'])
                 $scope.getAllFlightinfo = function () {
                     $http({
                         method: "GET",
-                        url: "api/flightinfo/:from/:date/:numTickets"
+                        url: "api/link"
                     }).then(function succesCallback(response) {
                         self.data = response.data;
                     }).then(function errorCallback(response) {
                         self.error = "Error";
                     });
                 };
-                $scope.getAllFlightInfo();
-
+                $scope.getAllFlightinfo();
+     }]);
 //                $scope.deleteUser = function (users) {
 //                    $http({
 //                        method: "DELETE",
@@ -32,4 +31,4 @@ angular.module('myApp.view5', ['ngRoute'])
 //
 //
 //                };
-            }]);
+       
