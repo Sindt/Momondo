@@ -1,3 +1,87 @@
+<div ng-controller="View6Ctrl
+            as ctrl">
 
+    <h1>CCK - Xmondo Booking-registration</h1>
+    <h3>Please fill out the forms with your information.</h3>
 
-<h1>CCK - Xmondo Booking (view6)</h1>
+    <form class=""  ng-submit="addRegistrationAsJSON()">
+        <table style="margin-top: 40px; width: 65%;">
+            <tr>
+                <td><h3>Basic information</h3></td>
+
+            </tr>
+            <tr>
+                <td>Flight: XXXXX</td>
+                <td>From: XXX to: XXX</td>
+                <td>Travel time: XXX</td>
+            </tr>
+
+            <tr>   
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <select id="numberOfSeats" ng-model="newreservation.numberOfSeats">
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                        <option value="6">6 Passengers</option>
+                        <option value="7">7 Passengers</option>
+                        <option value="8">8 Passengers</option> 
+                    </select>
+                </td>
+            </tr>
+            <td></td>
+            <tr>    
+            </tr>
+
+            <tr>
+                <td>
+                    <input id="ReserveeName" class="form-control" 
+                           placeholder="Reservation name" required ng-model="newreservation.name">
+
+                </td>
+                <td></td>
+                <td>
+                    <input id="ReservePhone" class="form-control" 
+                           placeholder="Phone number" required ng-model="newreservation.phone">    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="ReserveeEmail" class="form-control" 
+                           placeholder="Email" required ng-model="newreservation.email">        
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 65%" ng-repeat="numberOfSeats in ctrl.data.flights">
+            <tr>
+                <td>
+                    <input id="firstName" class="form-control" 
+                           placeholder="Enter Firstname" required ng-model="newreservation.firstName">
+                </td>
+
+                <td>
+                    <input id="lastName" class="form-control" 
+                           placeholder="Enter Lastname" required ng-model="newreservation.lastName">
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 65%">
+            <tr>
+                <td>Total price: XXXX</td>
+               
+                <td>
+                    <button type="submit" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
+                    </button>
+
+                </td>
+            </tr>
+        </table>
+
+    </form>
