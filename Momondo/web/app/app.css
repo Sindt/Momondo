@@ -1,4 +1,4 @@
- ol.list {
+ol.list {
     list-style-type: none;
     margin: 0;
     margin-left: 3em;
@@ -18,13 +18,86 @@ ol.list > li:before {
     top: 0;
     left: -1em;
     width: 0.8em;
-     
+
     font-size: 1.5em;
     line-height: 1;
     font-weight: bold;
     text-align: right;
     color: #464646;
- 
+
     content: counter(li-counter);
     counter-increment: li-counter;
+}
+
+/*table{
+    border-collapse: collapse;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px 20px 20px 20px;
+  }*/
+  
+.columnCubeBackgroundLeftTop{
+    border-radius: 20px 0px 0px 0px;
+    border-color:#000; 
+    background: #BDBDBD;
+    padding: 10px 20px 0px 20px;
+    width: 150px;
+    height: 20px; 
+
+}
+
+.columnCubeBackgroundLeftBottom{
+    border-radius:0px 0px 0px 20px; 
+    border-width: 2px;
+    border-color:#999999; 
+    background: #BDBDBD;
+    padding: 0px 20px 10px 20px; 
+    width: 150px;
+    height: 50px; 
+
+}
+
+.columnCubeBackgroundMiddleTop{
+    border-radius: 0px;
+    border-width: thin;
+    border-color:#464646; 
+    background: #BDBDBD;
+    padding: 10px 20px 0px 20px;
+    width: 150px;
+    height: 20px; 
+
+}
+
+.columnCubeBackgroundMiddleBottom{
+    border-radius:0px;
+    border-width: thin;
+    border-color:#999999; 
+    background: #BDBDBD;
+    padding: 0px 20px 10px 20px; 
+    width: 150px;
+    height: 50px; 
+
+}
+.columnCubeBackgroundRightTop{
+
+    border-radius: 0px 20px 0px 0px;
+    border-width: thin;
+    border-color:#464646; 
+    background: #BDBDBD;
+    padding: 10px 20px 0px 20px;
+    width: 150px;
+    height: 20px; 
+
+}
+
+.columnCubeBackgroundRightBottom{
+    border-radius: 0px 0px 20px 0px;
+    border-width: thin;
+    border-color:#999999; 
+    background: #BDBDBD;
+    padding: 0px 20px 10px 20px; 
+    width: 150px;
+    height: 50px; 
+
 }
