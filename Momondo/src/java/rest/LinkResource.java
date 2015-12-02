@@ -5,14 +5,20 @@
  */
 package rest;
 
+import facades.LinkFacade;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -21,6 +27,8 @@ import javax.ws.rs.PUT;
  */
 @Path("link")
 public class LinkResource {
+
+    LinkFacade facade = new LinkFacade();
 
     @Context
     private UriInfo context;
@@ -31,24 +39,21 @@ public class LinkResource {
     public LinkResource() {
     }
 
-    /**
-     * Retrieves representation of an instance of rest.LinkResource
-     * @return an instance of java.lang.String
-     */
     @GET
     @Produces("application/json")
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+    public Response getJson() throws IOException {
+        URL url;
+        HttpURLConnection request = null;
+        try {
+            url = new URL(facade.getLink(1L).getUrl());
+            request = (HttpURLConnection) url.openConnection();
+            request.connect();
+
+        } catch (Exception ex) {
+            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return Response.ok(request.getContent()).build();
     }
 
-    /**
-     * PUT method for updating or creating an instance of LinkResource
-     * @param content representation for the resource
-     * @return an HTTP response with content of the updated or created resource.
-     */
-    @PUT
-    @Consumes("application/json")
-    public void putJson(String content) {
-    }
 }

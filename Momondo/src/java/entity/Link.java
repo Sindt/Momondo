@@ -31,13 +31,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Link.findByLinkId", query = "SELECT l FROM Link l WHERE l.linkId = :linkId"),
     @NamedQuery(name = "Link.findByUrl", query = "SELECT l FROM Link l WHERE l.url = :url")})
 public class Link implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "link_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "link_id")
     private Long linkId;
+    
     @Size(max = 255)
     @Column(name = "url")
     private String url;
@@ -89,5 +89,5 @@ public class Link implements Serializable {
     public String toString() {
         return "entity.Link[ linkId=" + linkId + " ]";
     }
-    
+
 }
