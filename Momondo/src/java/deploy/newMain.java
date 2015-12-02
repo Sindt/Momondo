@@ -1,5 +1,8 @@
 package deploy;
 
+import facades.JSONConvert;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.persistence.Persistence;
 import org.glassfish.jersey.servlet.internal.PersistenceUnitBinder;
 
@@ -8,8 +11,9 @@ import org.glassfish.jersey.servlet.internal.PersistenceUnitBinder;
  */
 public class newMain {
 
-    public static void main(String[] args) {
-        Persistence.generateSchema("PU-Local", null);
+    public static void main(String[] args) throws ParseException {
+        
+
     }
-    
+
 }

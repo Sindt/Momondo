@@ -20,22 +20,24 @@ import org.junit.Ignore;
  * @author Sindt
  */
 public class LinkFacadeTest {
-    
+
+    private static LinkFacade facade = new LinkFacade();
+
     public LinkFacadeTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -74,5 +76,5 @@ public class LinkFacadeTest {
         System.out.println(result.get(0).getUrl());
         assertNotNull(result);
     }
-    
+
 }

@@ -5,19 +5,23 @@
  */
 package rest;
 
+import facades.JSONConvert;
 import facades.LinkFacade;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -40,12 +44,12 @@ public class LinkResource {
     }
 
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getJson() throws IOException {
         URL url;
         HttpURLConnection request = null;
         try {
-            url = new URL(facade.getLink(1L).getUrl());
+            url = new URL(JSONConvert.getJSONFromDateNumbers("CPH", new SimpleDateFormat("yyyy-mm-dd").parse("2016-01-01"), 3));
             request = (HttpURLConnection) url.openConnection();
             request.connect();
 
@@ -54,6 +58,13 @@ public class LinkResource {
         }
 
         return Response.ok(request.getContent()).build();
+    }
+
+    @GET
+    @Path("/{from}/{date}/{numbers}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getJson(@PathParam("from") String from, @PathParam("date") Date date, @PathParam("numbers") int numbers) {
+        return Response.ok(JSONConvert.getJSONFromDateNumbers(from, date, numbers)).build();
     }
 
 }

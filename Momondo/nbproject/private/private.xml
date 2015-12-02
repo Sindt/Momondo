@@ -6,10 +6,9 @@
         <group>
             <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/src/java/facades/LinkFacade.java</file>
             <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/test/facades/LinkFacadeTest.java</file>
-            <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/src/java/entity/Link.java</file>
             <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/src/java/rest/LinkResource.java</file>
-            <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/src/java/facades/JSONConvert.java</file>
-            <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/web/app/components/authentication.js</file>
+            <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/src/java/deploy/DeploymentConfiguration.java</file>
+            <file>file:/C:/Users/Sindt/Documents/NetBeansProjects/Momondo/myDEST/Momondo/web/app/app.js</file>
         </group>
     </open-files>
 </project-private>
