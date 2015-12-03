@@ -49,7 +49,7 @@ public class LinkResource {
         URL url;
         HttpURLConnection request = null;
         try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers("CPH", new SimpleDateFormat("yyyy-mm-dd").parse("2016-01-01"), 3));
+            url = new URL(JSONConvert.getJSONFromDateNumbers("STN", new SimpleDateFormat("yyyy-mm-dd").parse("2016-01-15"), 2));
             request = (HttpURLConnection) url.openConnection();
             request.connect();
 
