@@ -61,17 +61,17 @@
         <br>
         
         <uib-accordion>
-            <uib-accordion-group ng-repeat="flight in ctrl.data.flights" >
+            <uib-accordion-group style="width: 80%" ng-repeat="flight in ctrl.data.flights" >
                 <uib-accordion-heading>       
                     <table style="width: 100%; border-spacing: 0;">
                         <tr>
                             <td>
                                 {{flight.origin}} &rarr; {{flight.destination}}
                             </td>
-                            <td>
+                            <td style="text-align: center">
                                 {{flight.date}}  
                             </td>
-                            <td>
+                            <td style="text-align: right">
                                 Price: {{flight.totalPrice}}
                             </td>
 

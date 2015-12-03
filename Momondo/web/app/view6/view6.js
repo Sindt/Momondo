@@ -11,20 +11,26 @@ angular.module('myApp.view6', ['ngRoute'])
         .controller("View6Controller", ['$scope', '$http', function ($scope, $http) {
 
                 $scope.addRegistrationAsJSON = function () {
-                  
+
                     var res = $http.post('api/flightreservation', $scope.registration);
                     res.success(function (data, status, headers, config) {
                         $scope.message = data;
                         alert("Flight registered. Have a nice trip.");
-                        
-                        
-                        
-                        
+
+
+
+
 //                        $scope..username = '';
 //                        $scope.newuser.password = '';
                     });
                     res.error(function (data, status, headers, config) {
                         alert("failure message: " + JSON.stringify({data: data}));
                     });
+                };
+                
+                
+                //Repeating n number of first-/lastname registrations
+                $scope.getTimes = function (n) {
+                    return new Array(n);
                 };
             }]);

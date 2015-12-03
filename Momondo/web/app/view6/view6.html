@@ -5,7 +5,7 @@
     <h3>Please fill out the forms with your information.</h3>
 
     <form class=""  ng-submit="addRegistrationAsJSON()">
-        <table style="margin-top: 40px; width: 65%;">
+        <table style="margin: 5px; width: 65%;">
             <tr>
                 <td><h3>Basic information</h3></td>
 
@@ -58,7 +58,7 @@
             </tr>
         </table>
 
-        <table style="width: 65%" ng-repeat="numberOfSeats in ctrl.data.flights">
+        <table style="width: 65%; margin: 5px;" ng-repeat="t in numberOfSeats">
             <tr>
                 <td>
                     <input id="firstName" class="form-control" 
@@ -72,12 +72,13 @@
             </tr>
         </table>
 
-        <table style="width: 65%">
+        <table style="width: 65%; margin: 5;">
             <tr>
                 <td>Total price: XXXX</td>
-               
+                
+                
                 <td>
-                    <button type="submit" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
+                    <button type="submit" style="margin-right: 0px" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
                     </button>
 
                 </td>
