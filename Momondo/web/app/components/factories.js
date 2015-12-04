@@ -11,4 +11,4 @@ angular.module('myApp.factories', []).
     return {
       getInfo: getInfo
     };
-  });
+  })

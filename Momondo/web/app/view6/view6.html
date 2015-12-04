@@ -1,10 +1,9 @@
-<div ng-controller="View6Ctrl
-            as ctrl">
+<div ng-controller="View6Ctrl as ctrl">
 
     <h1>CCK - Xmondo Booking-registration</h1>
     <h3>Please fill out the forms with your information.</h3>
 
-    <form class=""  ng-submit="addRegistrationAsJSON()">
+    <form  ng-submit="addRegistrationAsJSON()">
         <table style="margin: 5px; width: 65%;">
             <tr>
                 <td><h3>Basic information</h3></td>
@@ -22,17 +21,25 @@
 
             <tr>
                 <td>
-                    <select id="numberOfSeats" ng-model="newreservation.numberOfSeats">
-                        <option value="1">1 Passenger</option>
-                        <option value="2">2 Passengers</option>
-                        <option value="3">3 Passengers</option>
-                        <option value="4">4 Passengers</option>
-                        <option value="5">5 Passengers</option>
-                        <option value="6">6 Passengers</option>
-                        <option value="7">7 Passengers</option>
-                        <option value="8">8 Passengers</option> 
-                    </select>
+
+                    <button ng-click="resDecreaseNumberOfPassengers()">-</button>
+                    <label style="margin: 5px;">{{resPassengers}}</label>
+                    <button ng-click="resIncreaseNumberOfPassengers()">+</button>
+                    
                 </td>
+                
+
+            <select id="numberOfSeats" ng-model="resPassengers">
+                <option value="1">1 Passenger</option>
+                <option value="2">2 Passengers</option>
+                <option value="3">3 Passengers</option>
+                <option value="4">4 Passengers</option>
+                <option value="5">5 Passengers</option>
+                <option value="6">6 Passengers</option>
+                <option value="7">7 Passengers</option>
+                <option value="8">8 Passengers</option> 
+            </select>
+            </td>
             </tr>
             <td></td>
             <tr>    
@@ -41,42 +48,42 @@
             <tr>
                 <td>
                     <input id="ReserveeName" class="form-control" 
-                           placeholder="Reservation name" required ng-model="newreservation.name">
+                           placeholder="Reservation name" required ng-model="newregistration.name">
 
                 </td>
                 <td></td>
                 <td>
                     <input id="ReservePhone" class="form-control" 
-                           placeholder="Phone number" required ng-model="newreservation.phone">    
+                           placeholder="Phone number" required ng-model="newregistration.phone">    
                 </td>
             </tr>
             <tr>
                 <td>
                     <input id="ReserveeEmail" class="form-control" 
-                           placeholder="Email" required ng-model="newreservation.email">        
+                           placeholder="Email" required ng-model="newregistration.email">        
                 </td>
             </tr>
         </table>
+        <div  ng-repeat="i in resGetNumberOfPassengers() track by $index">
+            <table style="width: 65%; margin: 5px;">
+                <tr>
+                    <td>
+                        <input id="firstName" class="form-control" 
+                               placeholder="Enter Firstname" required ng-model="newregistration.firstName">
+                    </td>
 
-        <table style="width: 65%; margin: 5px;" ng-repeat="t in numberOfSeats">
-            <tr>
-                <td>
-                    <input id="firstName" class="form-control" 
-                           placeholder="Enter Firstname" required ng-model="newreservation.firstName">
-                </td>
-
-                <td>
-                    <input id="lastName" class="form-control" 
-                           placeholder="Enter Lastname" required ng-model="newreservation.lastName">
-                </td>
-            </tr>
-        </table>
-
+                    <td>
+                        <input id="lastName" class="form-control" 
+                               placeholder="Enter Lastname" required ng-model="newregistration.lastName">
+                    </td>
+                </tr>
+            </table>
+        </div>
         <table style="width: 65%; margin: 5;">
             <tr>
                 <td>Total price: XXXX</td>
-                
-                
+
+
                 <td>
                     <button type="submit" style="margin-right: 0px" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
                     </button>
