@@ -71,7 +71,7 @@
                 <p>Travel time: {{flight.traveltime}} minutes</p>
                 <p>Number of seats: {{flight.numberOfSeats}}</p>
 
-                <a href="#/view6" class="btn btn-danger">Book flight</a>
+                <a href="#/view6" ng-click="storeFlightInfo(json.flights.flight)" class="btn btn-danger">Book flight</a>
             </uib-accordion-body>
         </uib-accordion-group>  
     </uib-accordion>

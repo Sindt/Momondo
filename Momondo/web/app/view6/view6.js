@@ -7,7 +7,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         });
 
     }]);
-app.controller("View6Ctrl", ['$scope', '$http', function ($scope, $http) {
+app.controller("View6Ctrl", ['$scope', '$http', function ($scope, $http, flightService) {
+        
+        var flightInfo = flightService.getFlightInfo();
+       
 
         $scope.addRegistrationAsJSON = function () {
 
@@ -26,10 +29,9 @@ app.controller("View6Ctrl", ['$scope', '$http', function ($scope, $http) {
                 alert("failure message: " + JSON.stringify({data: data}));
             });
         };
-        $scope.resPassengers = 1;
 
         $scope.resGetNumberOfPassengers = function () {
-            return new Array($scope.resPassengers);
+            return new Array(flightInfo.numberOfSeats);
         };
 
         $scope.resIncreaseNumberOfPassengers = function () {

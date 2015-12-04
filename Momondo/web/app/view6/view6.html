@@ -10,9 +10,9 @@
 
             </tr>
             <tr>
-                <td>Flight: XXXXX</td>
-                <td>From: XXX to: XXX</td>
-                <td>Travel time: XXX</td>
+                <td>Flight: {{flightInfo.flightId}}</td>
+                <td>From: {{flightInfo.origin}} to: {{flightInfo.destination}}</td>
+                <td>Travel time: {{flightInfo.traveltime}}</td>
             </tr>
             
             <tr>
@@ -27,7 +27,7 @@
                 <td>
 
                     <button ng-click="resDecreaseNumberOfPassengers()">-</button>
-                    <label style="margin: 5px;">{{resPassengers}}</label>
+                    <label style="margin: 5px;">{{flightInfo.numberOfSeats}}</label>
                     <button ng-click="resIncreaseNumberOfPassengers()">+</button>
                     
                 </td>

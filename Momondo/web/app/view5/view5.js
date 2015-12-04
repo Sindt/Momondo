@@ -6,7 +6,7 @@ angular.module('myApp.view5', ['ngRoute'])
                     templateUrl: 'app/view5/view5.html'
                 });
             }])
-        .controller("View5Ctrl", ["$http", "$scope", function ($http, $scope) {
+        .controller("View5Ctrl", ["$http", "$scope", function ($http, $scope, flightService) {
                 $scope.getAllFlightinfo = function () {
                     var date;
                     try {
@@ -30,6 +30,9 @@ angular.module('myApp.view5', ['ngRoute'])
                         $scope.status = response.status;
                         $scope.json = JSON.stringify(response.data, null, 2);
                     });
+                };
+                $scope.storeFlightInfo = function (flightObj) {
+                    flightService.addFlightInfo(flightObj);
                 };
 //                $scope.getAllFlightinfo();
             }]);
