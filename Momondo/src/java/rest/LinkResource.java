@@ -23,6 +23,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  * REST Web Service
@@ -49,7 +50,7 @@ public class LinkResource {
         URL url;
         HttpURLConnection request = null;
         try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers("STN", new SimpleDateFormat("yyyy-mm-dd").parse("2016-01-15"), 2));
+            url = new URL(JSONConvert.getJSONFromDateNumbers("CPH", "2016-01-01T00:00:00.000Z", 2));
             request = (HttpURLConnection) url.openConnection();
             request.connect();
 
@@ -61,9 +62,9 @@ public class LinkResource {
     }
 
     @GET
-    @Path("/{from}/{date}/{numbers}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getJson(@PathParam("from") String from, @PathParam("date") Date date, @PathParam("numbers") int numbers) throws IOException {
+    @Path("{from}/{date}/{numbers}")
+    public Response getJson(@PathParam("from") String from, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
         URL url;
         HttpURLConnection request = null;
         try {
