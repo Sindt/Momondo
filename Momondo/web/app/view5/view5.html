@@ -5,21 +5,12 @@
     <div>
         <table style="margin-top: 80px; width: 65%; border-spacing: 0;">
             <tr>
-                <td class="columnCubeBackgroundLeftTop">
-                    <p>Traveling from:</p>
-                </td>
-                <td class="columnCubeBackgroundMiddleTop">
-                </td>
-                <td class="columnCubeBackgroundMiddleTop">
-                    <p>Traveling to:</p>
-                </td>
-                <td class="columnCubeBackgroundMiddleTop">
-                    <p>Travel date:</p>
-                </td>
-                <td class="columnCubeBackgroundMiddleTop">
-                </td>
-                <td class="columnCubeBackgroundRightTop">
-                </td>
+                <td class="columnCubeBackgroundLeftTop"><p>Traveling from:</p></td>
+                <td class="columnCubeBackgroundMiddleTop"></td>
+                <td class="columnCubeBackgroundMiddleTop"><p>Traveling to:</p></td>
+                <td class="columnCubeBackgroundMiddleTop"><p>Date:</p></td>
+                <td class="columnCubeBackgroundMiddleTop"><p>Passengers:</p></td>
+                <td class="columnCubeBackgroundRightTop"></td>
             </tr>
             <tr>
                 <td class="columnCubeBackgroundLeftBottom">
@@ -35,7 +26,16 @@
                     <input type="date" ng-model="parameter.date">
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
-                    <input type="text" ng-model="parameter.seats">
+                    <select id="numberOfSeats" ng-model="parameter.seats">
+                        <option value=1>1 Passenger</option>
+                        <option value=2>2 Passengers</option>
+                        <option value=3>3 Passengers</option>
+                        <option value=4>4 Passengers</option>
+                        <option value=5>5 Passengers</option>
+                        <option value=6>6 Passengers</option>
+                        <option value=7>7 Passengers</option>
+                        <option value=8>8 Passengers</option> 
+                    </select>
                 </td>
                 <td class="columnCubeBackgroundRightBottom">
                     <button type="submit" class="btn btn-primary navbar-btn" ng-click="getAllFlightinfo()">Search
