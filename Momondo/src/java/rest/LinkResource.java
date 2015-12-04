@@ -23,7 +23,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  * REST Web Service
@@ -79,13 +78,13 @@ public class LinkResource {
     }
 
     @GET
-    @Path("/{from}/{to}/{date}/{numbers}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getJson(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") Date date, @PathParam("numbers") int numbers) throws IOException {
+    @Path("{from}/{to}/{date}/{numbers}")
+    public Response getJson(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
         URL url;
         HttpURLConnection request = null;
         try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers("STN", "SXF", new SimpleDateFormat("yyyy-mm-dd").parse("2016-01-15"), 2));
+            url = new URL(JSONConvert.getJSONFromDateNumbers(from, to, date, numbers));
             request = (HttpURLConnection) url.openConnection();
             request.connect();
 
@@ -95,20 +94,4 @@ public class LinkResource {
         return Response.ok(request.getContent()).build();
     }
 
-    @GET
-    @Path("toandfrom")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getJsonToAndFrom() throws IOException {
-        URL url;
-        HttpURLConnection request = null;
-        try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers("SXF", "CPH", new SimpleDateFormat("yyyy-mm-dd").parse("2016-01-01"), 2));
-            request = (HttpURLConnection) url.openConnection();
-            request.connect();
-
-        } catch (Exception ex) {
-            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return Response.ok(request.getContent()).build();
-    }
 }

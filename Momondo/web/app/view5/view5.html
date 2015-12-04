@@ -20,13 +20,13 @@
                     <button class="btn btn-primary navbar-btn" style="padding: 1px 12px 1px 12px;">&harr;</button>
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
-                    <input type="text" style="width:10em;" placeholder="Insert city">
+                    <input type="text" ng-model="parameter.destination" style="width:10em;" placeholder="Insert city">
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
                     <input type="date" ng-model="parameter.date">
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
-                    <select id="numberOfSeats" ng-model="parameter.seats">
+                    <select ng-model="parameter.seats">
                         <option value=1>1 Passenger</option>
                         <option value=2>2 Passengers</option>
                         <option value=3>3 Passengers</option>
@@ -38,8 +38,7 @@
                     </select>
                 </td>
                 <td class="columnCubeBackgroundRightBottom">
-                    <button type="submit" class="btn btn-primary navbar-btn" ng-click="getAllFlightinfo()">Search
-                    </button>
+                    <button type="submit" class="btn btn-primary navbar-btn" ng-click="getAllFlightinfo()">Search</button>
                 </td>
             </tr>
         </table>
@@ -67,11 +66,12 @@
                 </table>    
             </uib-accordion-heading>
             <uib-accordion-body>
+                <p>Airline : {{json.airline}}</p>
                 <p>Flight: {{flight.flightID}}</p>
                 <p>Travel time: {{flight.traveltime}} minutes</p>
                 <p>Number of seats: {{flight.numberOfSeats}}</p>
 
-                <a href="#/view6" ng-click="storeFlightInfo(json.flights.flight)" class="btn btn-danger">Book flight</a>
+                <a href="#/view6" class="btn btn-danger">Book flight</a>
             </uib-accordion-body>
         </uib-accordion-group>  
     </uib-accordion>

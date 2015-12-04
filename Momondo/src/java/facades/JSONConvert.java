@@ -45,11 +45,11 @@ public class JSONConvert {
         return json;
     }
 
-    public static String getJSONFromDateNumbers(String from, String to, Date date, int numbers) {
+    public static String getJSONFromDateNumbers(String from, String to, String date, int numbers) {
         List<Link> linkList = facade.getAllLinks();
         String json = "";
         for (Link l : linkList) {
-            json = l.getUrl() + from + "/" + to + "/" + gson.toJson(date).replace("\"", "") + "/" + gson.toJson(numbers);
+            json = l.getUrl() + from + "/" + to + "/" + date + "/" + gson.toJson(numbers);
         }
         return json;
     }

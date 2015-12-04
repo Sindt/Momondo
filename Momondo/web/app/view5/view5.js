@@ -6,16 +6,19 @@ angular.module('myApp.view5', ['ngRoute'])
                     templateUrl: 'app/view5/view5.html'
                 });
             }])
-        .controller("View5Ctrl", ["$http", "$scope", function ($http, $scope, flightService) {
+        .controller("View5Ctrl", ["$http", "$scope", function ($http, $scope) {
                 $scope.getAllFlightinfo = function () {
                     var date;
                     try {
                         date = $scope.parameter.date;
                         var dateUTCDummy = date.getTime() - (date.getTimezoneOffset() * 60000); //Quick hack that does not consider daylight savings
                         var adjustedDateStr = new Date(dateUTCDummy).toISOString();
-                        $scope.url = "api/link/" + $scope.parameter.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                        if ($scope.parameter.destination !== "undefined") {
+                            $scope.url = "api/link/" + $scope.parameter.origin + "/" + $scope.parameter.destination + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                        } else {
+                            $scope.url = "api/link/" + $scope.parameter.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                        }
                         console.log($scope.url);
-                        console.log($scope.parameter.seats);
                     }
                     catch (error) {
                         $scope.status = "Please provide all inputs";
@@ -27,24 +30,7 @@ angular.module('myApp.view5', ['ngRoute'])
                         $scope.status = response.status;
                         $scope.json = response.data;
                     }, function error(response) {
-                        $scope.status = response.status;
-                        $scope.json = JSON.stringify(response.data, null, 2);
+                        $scope.status = response.status + " - Error";
                     });
                 };
-                $scope.storeFlightInfo = function (flightObj) {
-                    flightService.addFlightInfo(flightObj);
-                };
-//                $scope.getAllFlightinfo();
             }]);
-//                $scope.deleteUser = function (users) {
-//                    $http({
-//                        method: "DELETE",
-//                        url: "api/admin/user/" + users.id
-//                    }).then(function succesCallback(response) {
-//                        $scope.getUsers();
-//
-//                    });
-//
-//
-//                };
-       

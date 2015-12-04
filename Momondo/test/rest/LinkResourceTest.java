@@ -88,7 +88,7 @@ public class LinkResourceTest {
         System.out.println("getJson");
         String from = "";
         String to = "";
-        Date date = null;
+        String date = "";
         int numbers = 0;
         LinkResource instance = new LinkResource();
         Response expResult = null;
