@@ -14,9 +14,13 @@
                 <td>From: XXX to: XXX</td>
                 <td>Travel time: XXX</td>
             </tr>
+            
+            <tr>
+                <td> </td>
+            </tr>
 
             <tr>   
-                <td></td>
+                <td>Amount of passengers: </td>
             </tr>
 
             <tr>
@@ -27,24 +31,7 @@
                     <button ng-click="resIncreaseNumberOfPassengers()">+</button>
                     
                 </td>
-                
-
-            <select id="numberOfSeats" ng-model="resPassengers">
-                <option value="1">1 Passenger</option>
-                <option value="2">2 Passengers</option>
-                <option value="3">3 Passengers</option>
-                <option value="4">4 Passengers</option>
-                <option value="5">5 Passengers</option>
-                <option value="6">6 Passengers</option>
-                <option value="7">7 Passengers</option>
-                <option value="8">8 Passengers</option> 
-            </select>
-            </td>
-            </tr>
-            <td></td>
-            <tr>    
-            </tr>
-
+       
             <tr>
                 <td>
                     <input id="ReserveeName" class="form-control" 
@@ -63,7 +50,12 @@
                            placeholder="Email" required ng-model="newregistration.email">        
                 </td>
             </tr>
+            <tr>
+                <td><h3>Passenger information</h3></td>
+
+            </tr>
         </table>
+        
         <div  ng-repeat="i in resGetNumberOfPassengers() track by $index">
             <table style="width: 65%; margin: 5px;">
                 <tr>
