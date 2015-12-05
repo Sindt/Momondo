@@ -1,7 +1,5 @@
 <div ng-controller="View5Ctrl as ctrl">
-
     <h1>CCK - Xmondo</h1>
-
     <div>
         <table style="margin-top: 80px; width: 65%; border-spacing: 0;">
             <tr>
@@ -38,7 +36,7 @@
                     </select>
                 </td>
                 <td class="columnCubeBackgroundRightBottom">
-                    <button type="submit" class="btn btn-primary navbar-btn" ng-click="getAllFlightinfo()">Search</button>
+                    <button type="submit" class="btn btn-primary navbar-btn" ng-click="getFlightinfo()">Search</button>
                 </td>
             </tr>
         </table>
@@ -53,15 +51,9 @@
             <uib-accordion-heading>       
                 <table style="width: 100%; border-spacing: 0;">
                     <tr>
-                        <td>
-                            {{flight.origin}} &rarr; {{flight.destination}}
-                        </td>
-                        <td style="text-align: center">
-                            {{flight.date}}  
-                        </td>
-                        <td style="text-align: right">
-                            Price: {{flight.totalPrice}}
-                        </td>
+                        <td>{{flight.origin}} &rarr; {{flight.destination}}</td>
+                        <td style="text-align: center">{{flight.date}}</td>
+                        <td style="text-align: right">Price: {{flight.totalPrice}}</td>
                     </tr>
                 </table>    
             </uib-accordion-heading>
@@ -70,7 +62,6 @@
                 <p>Flight: {{flight.flightID}}</p>
                 <p>Travel time: {{flight.traveltime}} minutes</p>
                 <p>Number of seats: {{flight.numberOfSeats}}</p>
-
                 <a href="#/view6" class="btn btn-danger">Book flight</a>
             </uib-accordion-body>
         </uib-accordion-group>  

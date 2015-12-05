@@ -7,21 +7,23 @@ angular.module('myApp.view5', ['ngRoute'])
                 });
             }])
         .controller("View5Ctrl", ["$http", "$scope", function ($http, $scope) {
-                $scope.getAllFlightinfo = function () {
+                $scope.getFlightinfo = function () {
                     var date;
                     try {
                         date = $scope.parameter.date;
                         var dateUTCDummy = date.getTime() - (date.getTimezoneOffset() * 60000); //Quick hack that does not consider daylight savings
                         var adjustedDateStr = new Date(dateUTCDummy).toISOString();
-                        if ($scope.parameter.destination !== "undefined") {
-                            $scope.url = "api/link/" + $scope.parameter.origin + "/" + $scope.parameter.destination + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
-                        } else {
-                            $scope.url = "api/link/" + $scope.parameter.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
-                        }
-                        console.log($scope.url);
+
                     }
                     catch (error) {
                         $scope.status = "Please provide all inputs";
+                    }
+                    if ($scope.parameter.destination === undefined) {
+                        $scope.url = "api/link/" + $scope.parameter.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                        console.log($scope.url);
+                    } else {
+                        $scope.url = "api/link/" + $scope.parameter.origin + "/" + $scope.parameter.destination + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                        console.log($scope.url);
                     }
                     $http({
                         method: 'GET',
@@ -32,5 +34,5 @@ angular.module('myApp.view5', ['ngRoute'])
                     }, function error(response) {
                         $scope.status = response.status + " - Error";
                     });
-                };
+                }
             }]);

@@ -7,36 +7,28 @@
         <table style="margin: 5px; width: 65%;">
             <tr>
                 <td><h3>Basic information</h3></td>
-
             </tr>
             <tr>
                 <td>Flight: {{flightInfo.flightId}}</td>
                 <td>From: {{flightInfo.origin}} to: {{flightInfo.destination}}</td>
                 <td>Travel time: {{flightInfo.traveltime}}</td>
             </tr>
-            
             <tr>
                 <td> </td>
             </tr>
-
             <tr>   
                 <td>Amount of passengers: </td>
             </tr>
-
             <tr>
                 <td>
-
                     <button ng-click="resDecreaseNumberOfPassengers()">-</button>
                     <label style="margin: 5px;">{{flightInfo.numberOfSeats}}</label>
                     <button ng-click="resIncreaseNumberOfPassengers()">+</button>
-                    
                 </td>
-       
             <tr>
                 <td>
                     <input id="ReserveeName" class="form-control" 
                            placeholder="Reservation name" required ng-model="newregistration.name">
-
                 </td>
                 <td></td>
                 <td>
