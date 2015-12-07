@@ -24,19 +24,19 @@ angular.module('myApp.view6', ['ngRoute'])
 //                    });
 //                };
 //
-//                $scope.resGetNumberOfPassengers = function () {
-//                    return new Array(flightInfo.numberOfSeats);
-//                };
-//
-//                $scope.resIncreaseNumberOfPassengers = function () {
-//                    $scope.resPassengers += 1;
-//                };
-//
-//                $scope.resDecreaseNumberOfPassengers = function () {
-//                    if ($scope.resPassengers !== 1) {
-//                        $scope.resPassengers -= 1;
-//                    }
-//                };
+                $scope.resGetNumberOfPassengers = function () {
+                    return new Array(flightInfo.numberOfSeats);
+                };
+
+                $scope.resIncreaseNumberOfPassengers = function () {
+                    $scope.resPassengers += 1;
+                };
+
+                $scope.resDecreaseNumberOfPassengers = function () {
+                    if ($scope.resPassengers !== 1) {
+                        $scope.resPassengers -= 1;
+                    }
+                };
 //
 //
 //                //Repeating n number of first-/lastname registrations

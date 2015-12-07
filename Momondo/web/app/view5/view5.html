@@ -53,7 +53,7 @@
                     <tr>
                         <td>{{flight.origin}} &rarr; {{flight.destination}}</td>
                         <td style="text-align: center">{{flight.date}}</td>
-                        <td style="text-align: right">Price: {{flight.totalPrice}}</td>
+                        <td style="text-align: right">Price: {{flight.totalPrice | currency:"&#8364;"}}</td>
                     </tr>
                 </table>    
             </uib-accordion-heading>
