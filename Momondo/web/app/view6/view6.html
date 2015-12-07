@@ -1,15 +1,13 @@
 <div ng-controller="View6Ctrl as ctrl">
-
-    <h1>CCK - Xmondo Booking-registration</h1>
-    <h3>Please fill out the forms with your information.</h3>
-
-    <form  ng-submit="addRegistrationAsJSON()">
+    <div ng-repeat="flightInfo in dataFactory.getFlight()">
+        <h1>CCK - Xmondo Booking-registration</h1>
+        <h3>Please fill out the forms with your information.</h3>
         <table style="margin: 5px; width: 65%;">
             <tr>
                 <td><h3>Basic information</h3></td>
             </tr>
             <tr>
-                <td>Flight: {{flightInfo.flightId}}</td>
+                <td>Flight: {{flightInfo.flightID}}</td>
                 <td>From: {{flightInfo.origin}} to: {{flightInfo.destination}}</td>
                 <td>Travel time: {{flightInfo.traveltime}}</td>
             </tr>
@@ -47,8 +45,15 @@
 
             </tr>
         </table>
-        
-        <div  ng-repeat="i in resGetNumberOfPassengers() track by $index">
+
+
+    </div>
+</div>
+
+
+<!--
+    <form  ng-submit="addRegistrationAsJSON()">
+           <div  ng-repeat="i in resGetNumberOfPassengers() track by $index">
             <table style="width: 65%; margin: 5px;">
                 <tr>
                     <td>
@@ -77,3 +82,5 @@
         </table>
 
     </form>
+</div> 
+</div>

@@ -47,7 +47,7 @@
         <br>
     </div>
     <uib-accordion>
-        <uib-accordion-group style="width: 80%" ng-repeat="flight in json.flights" >
+        <uib-accordion-group style="width: 80%" ng-repeat="flight in json.flights">
             <uib-accordion-heading>       
                 <table style="width: 100%; border-spacing: 0;">
                     <tr>
@@ -62,7 +62,7 @@
                 <p>Flight: {{flight.flightID}}</p>
                 <p>Travel time: {{flight.traveltime}} minutes</p>
                 <p>Number of seats: {{flight.numberOfSeats}}</p>
-                <a href="#/view6" class="btn btn-danger">Book flight</a>
+                <a class="btn btn-danger" ng-click="addFlight(flight);">Book Flight</a>
             </uib-accordion-body>
         </uib-accordion-group>  
     </uib-accordion>
