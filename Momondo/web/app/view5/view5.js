@@ -10,6 +10,16 @@ angular.module('myApp.view5', ['ngRoute'])
 
                 $scope.dataFactory = dataFactory;
 
+                $scope.options = [
+                    {name: 'Copenhagen', value: 'CPH'},
+                    {name: 'Berlin', value: 'SXF'},
+                    {name: 'Paris', value: 'CDG'},
+                    {name: 'Barcelona', value: 'BCN'},
+                    {name: 'London', value: 'STN'}
+                ];
+
+                $scope.origin = $scope.options[0];
+
                 $scope.getFlightinfo = function () {
                     var date;
                     var info;
@@ -21,11 +31,11 @@ angular.module('myApp.view5', ['ngRoute'])
                     catch (error) {
                         $scope.status = "Please provide all inputs";
                     }
-                    if ($scope.parameter.destination === undefined) {
-                        info = $scope.parameter.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                    if ($scope.destination === null) {
+                        info = $scope.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
                         console.log(info);
                     } else {
-                        info = $scope.parameter.origin + "/" + $scope.parameter.destination + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
+                        info = $scope.origin + "/" + $scope.destination + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
                         console.log(info);
                     }
 

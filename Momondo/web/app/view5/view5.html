@@ -12,16 +12,22 @@
             </tr>
             <tr>
                 <td class="columnCubeBackgroundLeftBottom">
-                    <input type="text" ng-model="parameter.origin" style="width:10em;" placeholder="Insert city">
+                    <select ng-model="origin" 
+                            ng-init="selectedOption = selectedOption || options[0].value"
+                            ng-options="option.value as option.name for option in options">
+                    </select>
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom"> 
                     <button class="btn btn-primary navbar-btn" style="padding: 1px 12px 1px 12px;">&harr;</button>
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
-                    <input type="text" ng-model="parameter.destination" style="width:10em;" placeholder="Insert city">
+                    <select ng-model="destination" 
+                            ng-options="option.value as option.name for option in options">
+                        <option value=""></option>
+                    </select>
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
-                    <input type="date" ng-model="parameter.date">
+                    <input min="2016-01-01" max="2016-12-31" type="date" ng-model="parameter.date">
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
                     <select ng-model="parameter.seats">
@@ -53,7 +59,7 @@
                     <tr>
                         <td>{{flight.origin}} &rarr; {{flight.destination}}</td>
                         <td style="text-align: center">{{flight.date}}</td>
-                        <td style="text-align: right">Price: {{flight.totalPrice | currency:"&#8364;"}}</td>
+                        <td style="text-align: right">Price: {{flight.totalPrice| currency:"&#8364;"}}</td>
                     </tr>
                 </table>    
             </uib-accordion-heading>
