@@ -31,7 +31,7 @@ angular.module('myApp.view5', ['ngRoute'])
                     catch (error) {
                         $scope.status = "Please provide all inputs";
                     }
-                    if ($scope.destination === null) {
+                    if ($scope.destination === undefined || $scope.destination === null) {
                         info = $scope.origin + "/" + adjustedDateStr + "/" + $scope.parameter.seats;
                         console.log(info);
                     } else {
