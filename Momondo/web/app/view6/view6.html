@@ -19,9 +19,7 @@
             </tr>
             <tr>
                 <td>
-                    <button ng-click="resDecreaseNumberOfPassengers(flightInfo)">-</button>
-                    <label>{{flightInfo.numberOfSeats}}</label>
-                    <button ng-click="resIncreaseNumberOfPassengers(flightInfo)">+</button>
+                    <input min="1" max="8" type="number"ng-change="updateTotalPrice(flightInfo)" ng-model="flightInfo.numberOfSeats">
                 </td>
             <tr>
                 <td>
@@ -64,18 +62,14 @@
             </div>
             <table style="width: 65%; margin: 5;">
                 <tr>
-                    <td>Total price: XXXX</td>
-
-
+                    <td>Total price: {{flightInfo.totalPrice}} </td>
                     <td>
                         <button type="submit" style="margin-right: 0px" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
                         </button>
-
                     </td>
                 </tr>
             </table>
-
         </form>
     </div> 
 
-    </div>
+</div>

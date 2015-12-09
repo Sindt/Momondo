@@ -11,6 +11,10 @@ angular.module('myApp.view6', ['ngRoute'])
                 $scope.dataFactory = dataFactory;
 
 
+                $scope.updateTotalPrice = function (flight) {
+                    flight.totalPrice = dataFactory.getBasePrice() * flight.numberOfSeats;
+                }
+
                 $scope.addRegistrationAsJSON = function () {
 
                     var res = $http.post('api/flightreservation', $scope.newregistration);
@@ -28,20 +32,5 @@ angular.module('myApp.view6', ['ngRoute'])
                     return new Array(flight.numberOfSeats);
                 };
 
-                $scope.resIncreaseNumberOfPassengers = function (flight) {
-                    flight.numberOfSeats++;
-                };
-
-                $scope.resDecreaseNumberOfPassengers = function (flight) {
-                    if (flight.numberOfSeats !== 1) {
-                        flight.numberOfSeats -= 1;
-                    }
-                };
-//
-//
-//                //Repeating n number of first-/lastname registrations
-//                $scope.getTimes = function (n) {
-//                    return new Array(n);
-//                };
             }]);
 

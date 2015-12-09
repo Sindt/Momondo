@@ -7,8 +7,10 @@ angular.module('myApp.factories', [])
                 var urlBase = 'api/link';
                 var dataFactory = {};
                 var flightInfo = [];
+                var basePrice = 0;
 
                 dataFactory.addItem = function (item) {
+                    basePrice = (item.totalPrice / item.numberOfSeats);
                     flightInfo.push(item);
                     $window.location.href = '#/view6';
                 };
@@ -22,5 +24,11 @@ angular.module('myApp.factories', [])
                     console.log(flightInfo);
                     return flightInfo;
                 };
+
+                dataFactory.getBasePrice = function () {
+                    return basePrice;
+                };
                 return dataFactory;
             }]);
+
+        
