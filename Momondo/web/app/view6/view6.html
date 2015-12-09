@@ -19,9 +19,9 @@
             </tr>
             <tr>
                 <td>
-                    <button ng-click="resDecreaseNumberOfPassengers()">-</button>
-                    <label style="margin: 5px;">{{flightInfo.numberOfSeats}}</label>
-                    <button ng-click="resIncreaseNumberOfPassengers()">+</button>
+                    <button ng-click="resDecreaseNumberOfPassengers(flightInfo)">-</button>
+                    <label>{{flightInfo.numberOfSeats}}</label>
+                    <button ng-click="resIncreaseNumberOfPassengers(flightInfo)">+</button>
                 </td>
             <tr>
                 <td>
@@ -46,41 +46,36 @@
             </tr>
         </table>
 
+        <form  ng-submit="addRegistrationAsJSON()">
+            <div  ng-repeat="i in resGetNumberOfPassengers(flightInfo) track by $index">
+                <table style="width: 65%; margin: 5px;">
+                    <tr>
+                        <td>
+                            <input id="firstName" class="form-control" 
+                                   placeholder="Enter Firstname" required ng-model="newregistration.firstName">
+                        </td>
 
-    </div>
-</div>
-
-
-<!--
-    <form  ng-submit="addRegistrationAsJSON()">
-           <div  ng-repeat="i in resGetNumberOfPassengers() track by $index">
-            <table style="width: 65%; margin: 5px;">
+                        <td>
+                            <input id="lastName" class="form-control" 
+                                   placeholder="Enter Lastname" required ng-model="newregistration.lastName">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <table style="width: 65%; margin: 5;">
                 <tr>
-                    <td>
-                        <input id="firstName" class="form-control" 
-                               placeholder="Enter Firstname" required ng-model="newregistration.firstName">
-                    </td>
+                    <td>Total price: XXXX</td>
+
 
                     <td>
-                        <input id="lastName" class="form-control" 
-                               placeholder="Enter Lastname" required ng-model="newregistration.lastName">
+                        <button type="submit" style="margin-right: 0px" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
+                        </button>
+
                     </td>
                 </tr>
             </table>
-        </div>
-        <table style="width: 65%; margin: 5;">
-            <tr>
-                <td>Total price: XXXX</td>
 
+        </form>
+    </div> 
 
-                <td>
-                    <button type="submit" style="margin-right: 0px" class="btn btn-success" ng-click="addRegistrationAsJSON()">Make reservation
-                    </button>
-
-                </td>
-            </tr>
-        </table>
-
-    </form>
-</div> 
-</div>
+    </div>

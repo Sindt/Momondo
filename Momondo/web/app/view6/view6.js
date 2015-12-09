@@ -8,33 +8,33 @@ angular.module('myApp.view6', ['ngRoute'])
 
             }])
         .controller("View6Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
-
                 $scope.dataFactory = dataFactory;
 
-//                $scope.addRegistrationAsJSON = function () {
-//
-//                    var res = $http.post('api/flightreservation', $scope.newregistration);
-//                    res.success(function (data, status, headers, config) {
-//                        $scope.message = data;
-//                        alert("Flight registered. Have a nice trip.");
-//                        $scope.newregistration.flight = "MH370";
-//                    });
-//                    res.error(function (data, status, headers, config) {
-//                        alert("failure message: " + JSON.stringify({data: data}));
-//                    });
-//                };
-//
-                $scope.resGetNumberOfPassengers = function () {
-                    return new Array(flightInfo.numberOfSeats);
+
+                $scope.addRegistrationAsJSON = function () {
+
+                    var res = $http.post('api/flightreservation', $scope.newregistration);
+                    res.success(function (data, status, headers, config) {
+                        $scope.message = data;
+                        alert("Flight registered. Have a nice trip.");
+                        $scope.newregistration.flight = "MH370";
+                    });
+                    res.error(function (data, status, headers, config) {
+                        alert("failure message: " + JSON.stringify({data: data}));
+                    });
                 };
 
-                $scope.resIncreaseNumberOfPassengers = function () {
-                    $scope.resPassengers += 1;
+                $scope.resGetNumberOfPassengers = function (flight) {
+                    return new Array(flight.numberOfSeats);
                 };
 
-                $scope.resDecreaseNumberOfPassengers = function () {
-                    if ($scope.resPassengers !== 1) {
-                        $scope.resPassengers -= 1;
+                $scope.resIncreaseNumberOfPassengers = function (flight) {
+                    flight.numberOfSeats++;
+                };
+
+                $scope.resDecreaseNumberOfPassengers = function (flight) {
+                    if (flight.numberOfSeats !== 1) {
+                        flight.numberOfSeats -= 1;
                     }
                 };
 //
