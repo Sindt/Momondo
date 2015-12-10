@@ -16,12 +16,10 @@ angular.module('myApp.factories', [])
                 };
 
                 dataFactory.getAllFlightinfo = function (info) {
-
                     return $http.get(urlBase + "/" + info);
                 };
 
                 dataFactory.getFlight = function () {
-                    console.log(flightInfo);
                     return flightInfo;
                 };
 

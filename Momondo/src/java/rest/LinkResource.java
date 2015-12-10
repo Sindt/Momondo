@@ -10,9 +10,8 @@ import facades.LinkFacade;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.core.Context;
@@ -21,6 +20,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -45,38 +49,55 @@ public class LinkResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getJson() throws IOException {
-        URL url;
-        HttpURLConnection request = null;
-        try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers("CPH", "2016-01-01T00:00:00.000Z", 2));
-            request = (HttpURLConnection) url.openConnection();
-            request.connect();
-
-        } catch (Exception ex) {
-            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return Response.ok(request.getContent()).build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("{from}/{date}/{numbers}")
     public Response getJson(@PathParam("from") String from, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
-        URL url;
-        HttpURLConnection request = null;
-        try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers(from, date, numbers));
-            request = (HttpURLConnection) url.openConnection();
-            request.connect();
+        Client client = ClientBuilder.newClient();
+        List<String> jsonLinks = JSONConvert.getJSONFromDateNumbers(from, date, numbers);
+        List<String> list = new ArrayList();
+        GenericEntity<List<String>> link = new GenericEntity<List<String>>(list) {
+        };
+        System.out.println(link);
+        String links = "";
+        Response response = null;
 
-        } catch (Exception ex) {
-            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+
+            for (String l : jsonLinks) {
+                WebTarget webTarget = client.target(l);
+                Invocation invocation = webTarget.request(MediaType.APPLICATION_JSON).buildGet();
+                response = invocation.invoke();
+                System.out.println(response);
+                links = response.readEntity(String.class);
+                list.add(links);
+                System.out.println(list.toString());
+            }
+
+        } catch (Exception e) {
+
         }
-        return Response.ok(request.getContent()).build();
+        return Response.ok(list.get(0)).build();
     }
 
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("{from}/{date}/{numbers}")
+//    public Response getJson(@PathParam("from") String from, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
+//        URL url;
+//        String link = "";
+//        HttpURLConnection request = null;
+//        JSONObject mergedJSON = new JSONObject();
+//        try {
+//            link = JSONConvert.getJSONFromDateNumbers(from, date, numbers);
+//            url = new URL(link);
+//            request = (HttpURLConnection) url.openConnection();
+//            request.connect();
+//
+//        } catch (Exception ex) {
+//            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        return Response.ok(request.getContent()).build();
+//    }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{from}/{to}/{date}/{numbers}")
@@ -89,7 +110,8 @@ public class LinkResource {
             request.connect();
 
         } catch (Exception ex) {
-            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LinkResource.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return Response.ok(request.getContent()).build();
     }

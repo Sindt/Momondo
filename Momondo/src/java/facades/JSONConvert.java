@@ -35,14 +35,17 @@ public class JSONConvert {
         return gson.toJson(links);
     }
 
-    public static String getJSONFromDateNumbers(String from, String date, int numbers) {
-
+    public static List<String> getJSONFromDateNumbers(String from, String date, int numbers) {
+      
         List<Link> linkList = facade.getAllLinks();
-        String json = "";
+        List<String> jsonLinks = new ArrayList();
         for (Link l : linkList) {
-            json = l.getUrl() + from + "/" + date + "/" + gson.toJson(numbers);
+            String string = new String();
+            string = l.getUrl() + from + "/" + date + "/" + gson.toJson(numbers);
+            
+            jsonLinks.add(string);
         }
-        return json;
+        return jsonLinks;
     }
 
     public static String getJSONFromDateNumbers(String from, String to, String date, int numbers) {
