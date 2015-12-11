@@ -48,21 +48,19 @@
             <table style="width: 65%; margin: 5px;">
                 <tr>
                     <td>
-                        <input id="firstName" class="form-control" 
-                               placeholder="Enter Firstname" required ng-model="newregistration.firstName">
+                        <input class="form-control" placeholder="Enter Firstname" required ng-model="firstName">
                     </td>
                     <td>
-                        <input id="lastName" class="form-control" 
-                               placeholder="Enter Lastname" required ng-model="newregistration.lastName">
+                        <input  class="form-control" placeholder="Enter Lastname" required ng-model="lastName">
                     </td>
                 </tr>
             </table>
         </div>
         <table style="width: 65%; margin: 5;">
             <tr>
-                <td>Total price: {{flightInfo.totalPrice}} </td>
+                <td>Total price: {{flightInfo.totalPrice}}</td>
                 <td>
-                    <button type="submit" class="btn btn-success" ng-click="addRegistration(newregistration.firstName)">Make reservation</button>
+                    <button type="submit" class="btn btn-success" ng-click="addRegistration(i)">Make reservation</button>
                 </td>
             </tr>
         </table>

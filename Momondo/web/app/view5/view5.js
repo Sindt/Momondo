@@ -7,7 +7,6 @@ angular.module('myApp.view5', ['ngRoute'])
                 });
             }])
         .controller("View5Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
-
                 $scope.dataFactory = dataFactory;
 
                 $scope.options = [
@@ -53,6 +52,10 @@ angular.module('myApp.view5', ['ngRoute'])
                     var data = flight;
                     console.log(flight);
                     dataFactory.addItem(data);
+                };
+
+                $scope.createResObject = function (flight) {
+                    dataFactory.createResObject(flight.flightID);
                 };
 
             }]);
