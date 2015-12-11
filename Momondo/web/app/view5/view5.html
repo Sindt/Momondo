@@ -27,18 +27,18 @@
                     </select>
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
-                    <input min="2016-01-01" max="2016-12-31" type="date" ng-model="parameter.date">
+                    <input min="2016-01-01" max="2016-12-31" type="date" ng-model="parameter.date" required>
                 </td>
                 <td class="columnCubeBackgroundMiddleBottom">
                     <select ng-model="parameter.seats">
-                        <option value=1>1 Passenger</option>
-                        <option value=2>2 Passengers</option>
-                        <option value=3>3 Passengers</option>
-                        <option value=4>4 Passengers</option>
-                        <option value=5>5 Passengers</option>
-                        <option value=6>6 Passengers</option>
-                        <option value=7>7 Passengers</option>
-                        <option value=8>8 Passengers</option> 
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                        <option value="6">6 Passengers</option>
+                        <option value="7">7 Passengers</option>
+                        <option value="8">8 Passengers</option> 
                     </select>
                 </td>
                 <td class="columnCubeBackgroundRightBottom">
@@ -58,15 +58,18 @@
                 <table style="width: 100%; border-spacing: 0;">
                     <tr>
                         <td>{{flight.origin}} &rarr; {{flight.destination}}</td>
-                        <td style="text-align: center">{{flight.date}}</td>
-                        <td style="text-align: right">Price: {{flight.totalPrice| currency:"&#8364;"}}</td>
+                        <td style="text-align: center">{{dateTimeFormat(flight.date)[0]}} - {{dateTimeFormat(flight.date)[1]}}</td>
+                        <td style="text-align: right">Total Price: {{flight.totalPrice| currency:"&#8364;"}}</td>
                     </tr>
                 </table>    
             </uib-accordion-heading>
             <uib-accordion-body>
                 <p>Airline : {{json.airline}}</p>
-                <p>Flight: {{flight.flightID}}</p>
+                <p>Flight: {{flightIdFormat(flight.flightID)}}</p>
+                <p>Departure time: {{dateTimeFormat(flight.date)[1]}}</p>
                 <p>Travel time: {{flight.traveltime}} minutes</p>
+<!--                Tilføj pris pr. ticket-->
+                <p>Price per ticket: {{basePrice}}</p>
                 <p>Number of seats: {{flight.numberOfSeats}}</p>
                 <a class="btn btn-danger" ng-click="createResObject(flight); addFlight(flight)">Book Flight</a>
             </uib-accordion-body>

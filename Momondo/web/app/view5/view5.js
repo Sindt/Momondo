@@ -18,6 +18,27 @@ angular.module('myApp.view5', ['ngRoute'])
                 ];
 
                 $scope.origin = $scope.options[0];
+                
+                $scope.basePrice = dataFactory.getBasePrice();
+
+                $scope.flightIdFormat = function (flightID) {
+
+                    var formatedId = flightID.split("x")[0];
+                    return formatedId;
+                    console.log(formatedId);
+                };
+                $scope.dateTimeFormat = function (flightDate) {
+
+                    var formatedDateTime = [];
+
+                    formatedDateTime[0] = flightDate.split("T")[0];
+                    formatedDateTime[1] = flightDate.split("T")[1].substring(0, 5);
+                    console.log(formatedDateTime);
+
+                    return formatedDateTime;
+
+                };
+
 
                 $scope.getFlightinfo = function () {
                     var date;

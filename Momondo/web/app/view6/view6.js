@@ -12,7 +12,7 @@ angular.module('myApp.view6', ['ngRoute'])
 
                 $scope.updateTotalPrice = function (flight) {
                     flight.totalPrice = dataFactory.getBasePrice() * flight.numberOfSeats;
-                }
+                };
 
 //                $scope.addRegistrationAsJSON = function () {
 //

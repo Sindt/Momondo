@@ -1,0 +1,26 @@
+<div ng-controller="View7Ctrl as ctrl">
+
+    <uib-accordion>
+        <uib-accordion-group style="width: 80%">
+            <uib-accordion-heading>       
+                <table style="width: 100%; border-spacing: 0;">
+                    <tr>
+                        <td>{{flight.origin}} &rarr; {{flight.destination}}</td>
+                        <td style="text-align: center">{{flight.date}}</td>
+                        <td style="text-align: right">Price: {{flight.totalPrice| currency:"&#8364;"}}</td>
+                    </tr>
+                </table>    
+            </uib-accordion-heading>
+            <uib-accordion-body>
+                <p>Airline : {{json.airline}}</p>
+                <p>Flight: {{flightIdFormat(flight.flightID)}}</p>
+                <p>Departure time: {{dateTimeFormat(flight.date)[1]}}</p>
+                <p>Travel time: {{flight.traveltime}} minutes</p>
+                <!--                Tilføj pris pr. ticket-->
+                <p>Price per ticket: {{basePrice}}</p>
+                <p>Number of seats: {{flight.numberOfSeats}}</p>
+                <a class="btn btn-danger" ng-click="">Delete reservation</a>
+            </uib-accordion-body>
+        </uib-accordion-group>  
+    </uib-accordion>
+</div>

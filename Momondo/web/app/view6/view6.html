@@ -9,7 +9,15 @@
             <tr>
                 <td>Flight: {{flightInfo.flightID}}</td>
                 <td>From: {{flightInfo.origin}} to: {{flightInfo.destination}}</td>
-                <td>Travel time: {{flightInfo.traveltime}}</td>
+                <td>Travel time: {{flightInfo.traveltime}} </td>
+                
+            <tr>
+                <td>Departure time: {{flightInfo.flightID.split("T", 1).substring(0, 5)}}</td>
+                <td>Travel date: {{flightInfo.flightID.split("x", 3).substring(0, 9)}}</td>
+            </tr>
+                
+                
+                
             </tr>
             <tr>
                 <td> </td>
@@ -40,8 +48,8 @@
             </tr>
             <tr>
                 <td><h3>Passenger information</h3></td>
-
             </tr>
+ 
         </table>
 
         <div ng-repeat="i in resGetNumberOfPassengers(flightInfo) track by $index">
