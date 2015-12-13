@@ -20,6 +20,14 @@ angular.module('myApp.view5', ['ngRoute'])
                 $scope.origin = $scope.options[0];
                 
                 $scope.basePrice = dataFactory.getBasePrice();
+                
+                $scope.swapLocations = function (){
+                    var temp;
+                    temp = $scope.origin;
+                    $scope.origin = $scope.destination;
+                    $scope.destination = temp;
+                    
+                };
 
                 $scope.flightIdFormat = function (flightID) {
 

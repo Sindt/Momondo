@@ -10,44 +10,56 @@ angular.module('myApp.view6', ['ngRoute'])
         .controller("View6Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
                 $scope.dataFactory = dataFactory;
 
+                $scope.flightIdFormat = function (flightID) {
+
+                    var formatedId = flightID.split("x")[0];
+                    return formatedId;
+
+                };
+                $scope.dateTimeFormat = function (flightDate) {
+
+                    var formatedDateTime = [];
+
+                    formatedDateTime[0] = flightDate.split("T")[0];
+                    formatedDateTime[1] = flightDate.split("T")[1].substring(0, 5);
+
+                    return formatedDateTime;
+
+                };
+
                 $scope.updateTotalPrice = function (flight) {
                     flight.totalPrice = dataFactory.getBasePrice() * flight.numberOfSeats;
                 };
 
-//                $scope.addRegistrationAsJSON = function () {
-//
-//                    var res = $http.post('api/flightreservation', $scope.newregistration);
-//                    res.success(function (data, status, headers, config) {
-//                        $scope.message = data;
-//                        alert("Flight registered. Have a nice trip.");
-//                        $scope.newregistration.flight = "MH370";
-//                    });
-//                    res.error(function (data, status, headers, config) {
-//                        alert("failure message: " + JSON.stringify({data: data}));
-//                    });
-//                };
                 $scope.resGetNumberOfPassengers = function (flight) {
-                    return new Array(flight.numberOfSeats);
+                    $scope.passengers = [];
+
+                    for (var i = 0; i < flight.numberOfSeats; i++) {
+                        $scope.passengers.push({firstName: "", lastName: ""});
+                    }
+                    console.log($scope.passengers);
                 };
-                $scope.addRegistration = function (info) {
-                    console.log(info);
-//                    angular.forEach($scope.newregistration.firstName, function (value, key) {
-//
-//                        Passengers.push($scope.newregistration.firstName,
-//                                $scope.newregistration.lastName);
-//                    });
-//                    console.log(Passengers);
-//                    reservationInfo.push = (
-//                            $scope.flightInfo.flightID,
-//                            $scope.flightInfo.getNumberOfSeats,
-//                            $scope.newregistration.name,
-//                            $scope.newregistration.phone,
-//                            $scope.newregistration.email,
-//                            Passengers
+                $scope.addReservation = function (flight) {
+
+                    var reservationInfo = [];
+                    reservationInfo.push = (
+                            "flightID:" + flight.flightID);
+//                            "numberOfSeats:" +flight.numberOfSeats,
+//                            $scope.name,
+//                            $scope.phone,
+//                            $scope.email,
+//                            "Passengers:"    +$scope.passengers
 //                            );
-//
-//                    console.log(reservationInfo);
+
+                    dataFactory.createReservation(reservationInfo);
+
+                    console.log(reservationInfo);
                 };
+                window.onload = function () {
+                    $scope.passengers.push({firstName: "", lastName: ""});
+
+                };
+
             }
         ]);
 

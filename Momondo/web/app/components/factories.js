@@ -4,6 +4,7 @@
 angular.module('myApp.factories', [])
         .factory('dataFactory', ['$http', '$window', function ($http, $window) {
 
+                var resUrl = 'http://angularairline-plaul.rhcloud.com/api/flightreservation';
                 var urlBase = 'api/link';
                 var dataFactory = {};
                 var flightInfo = [];
@@ -30,7 +31,19 @@ angular.module('myApp.factories', [])
 
                 dataFactory.createResObject = function (info) {
                     ResObj.push(info);
-                }
+                };
+                dataFactory.createReservation = function (reservationRequest){
+                    
+                    var res = $http.post(resUrl, reservationRequest );
+                    res.success(function (data, status, headers, config) {
+                        var message = data;
+                        alert("You have now purchased your ticket. Have a great trip.");
+                    });
+                    res.error(function (data, status, headers, config) {
+                        alert("failure message: " + JSON.stringify({data: data}));
+                    });
+                };
+                
                 return dataFactory;
             }]);
 
