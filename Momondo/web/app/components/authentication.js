@@ -125,7 +125,7 @@ angular.module('myApp.security', [])
                     $rootScope.error = err.error.code + ": ";
 
                     if (err.error.code === 401) {
-                        $rootScope.error += " You are are not Authenticated - did you log on to the system";
+                        $rootScope.error += " You are are not Authenticated - To view this page, you must log in.";
                     }
                     else {
                         $rootScope.error += err.error.message;

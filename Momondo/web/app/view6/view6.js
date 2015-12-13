@@ -43,13 +43,13 @@ angular.module('myApp.view6', ['ngRoute'])
 
                     var reservationInfo = [];
                     reservationInfo.push = (
-                            "flightID:" + flight.flightID);
-//                            "numberOfSeats:" +flight.numberOfSeats,
-//                            $scope.name,
-//                            $scope.phone,
-//                            $scope.email,
-//                            "Passengers:"    +$scope.passengers
-//                            );
+                            "flightID:" + flight.flightID,
+                            "numberOfSeats:" +flight.numberOfSeats,
+                            $scope.name,
+                            $scope.phone,
+                            $scope.email,
+                            "Passengers:"    +$scope.passengers
+                            );
 
                     dataFactory.createReservation(reservationInfo);
 

@@ -34,7 +34,7 @@ angular.module('myApp.factories', [])
                 };
                 dataFactory.createReservation = function (reservationRequest){
                     
-                    var res = $http.post(resUrl, reservationRequest );
+                    var res = $http.post(urlBase, reservationRequest);
                     res.success(function (data, status, headers, config) {
                         var message = data;
                         alert("You have now purchased your ticket. Have a great trip.");
