@@ -9,7 +9,7 @@ angular.module('myApp.view6', ['ngRoute'])
             }])
         .controller("View6Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
                 $scope.dataFactory = dataFactory;
-
+                
                 $scope.flightIdFormat = function (flightID) {
 
                     var formatedId = flightID.split("x")[0];

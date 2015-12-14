@@ -8,6 +8,7 @@ angular.module('myApp.view5', ['ngRoute'])
             }])
         .controller("View5Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
                 $scope.dataFactory = dataFactory;
+                $scope.showResultText = false;
 
                 $scope.options = [
                     {name: 'Copenhagen', value: 'CPH'},
@@ -49,6 +50,7 @@ angular.module('myApp.view5', ['ngRoute'])
 
 
                 $scope.getFlightinfo = function () {
+                    $scope.showResultText = true;
                     var date;
                     var info;
                     try {

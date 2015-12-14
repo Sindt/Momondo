@@ -10,11 +10,11 @@
                 <tr>
                     <td>Flight: {{flightIdFormat(flightInfo.flightID)}}</td>
                     <td>From: {{flightInfo.origin}} to: {{flightInfo.destination}}</td>
-                    <td>Travel date: {{dateTimeFormat(flightInfo.date)[0]}}</td>
+                    <td style="text-align: right">Travel date: {{dateTimeFormat(flightInfo.date)[0]}}</td>
 
                 <tr>
                     <td>Departure time: {{dateTimeFormat(flightInfo.date)[1]}}</td>
-                    <td>Travel time: {{flightInfo.traveltime}}</td>
+                    <td>Travel time: {{flightInfo.traveltime}} minutes</td>
                 </tr>
 
                 <tr><td><br></td></tr>
@@ -87,8 +87,10 @@
             <table style="width: 65%; margin: 5;">
                 <tr>
                     <td>Total price: {{flightInfo.totalPrice}}</td>
+                    <td></td>
                     <td>
-                        <button type="submit" 
+                        <button style="text-align: right"
+                                type="submit" 
                                 class="btn btn-success" 
                                 ng-click="addReservation(flightInfo)"
                                 >Make reservation</button>

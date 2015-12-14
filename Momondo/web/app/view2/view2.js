@@ -18,5 +18,4 @@ angular.module('myApp.view2', ['ngRoute'])
           }, function errorCallback(res) {
             $scope.error = res.status + ": "+ res.data.statusText;
           });
-
         });
