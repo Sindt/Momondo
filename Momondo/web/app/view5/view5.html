@@ -75,8 +75,7 @@
                 <p>Flight: {{flightIdFormat(flight.flightID)}}</p>
                 <p>Departure time: {{dateTimeFormat(flight.date)[1]}}</p>
                 <p>Travel time: {{flight.traveltime}} minutes</p>
-<!--                Tilføj pris pr. ticket-->
-                <p>Price per ticket: {{basePrice}}</p>
+                <p>Price per ticket: {{flight.totalPrice/flight.numberOfSeats}}</p>
                 <p>Number of seats: {{flight.numberOfSeats}}</p>
                 <a class="btn btn-danger" ng-click="createResObject(flight); addFlight(flight)">Book Flight</a>
             </uib-accordion-body>

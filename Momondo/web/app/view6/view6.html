@@ -40,7 +40,7 @@
                                class="form-control" 
                                placeholder="Reservation name" 
                                required 
-                               ng-model="name">
+                               ng-model="resName">
                     </td>
                     <td></td>
                     <td>
@@ -48,7 +48,7 @@
                                class="form-control" 
                                placeholder="Phone number" 
                                required 
-                               ng-model="phone">    
+                               ng-model="resPhone">    
                     </td>
                 </tr>
                 <tr>
@@ -57,7 +57,7 @@
                                class="form-control" 
                                placeholder="Email" 
                                required 
-                               ng-model="email">        
+                               ng-model="resEmail">        
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@
             </div>
             <table style="width: 65%; margin: 5;">
                 <tr>
-                    <td>Total price: {{flightInfo.totalPrice}}</td>
+                    <td>Total price: {{flightInfo.totalPrice | currency:"&#8364;"}}</td>
                     <td></td>
                     <td>
                         <button style="text-align: right"

@@ -9,6 +9,7 @@ angular.module('myApp.view6', ['ngRoute'])
             }])
         .controller("View6Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
                 $scope.dataFactory = dataFactory;
+       
                 
                 $scope.flightIdFormat = function (flightID) {
 
@@ -39,27 +40,24 @@ angular.module('myApp.view6', ['ngRoute'])
                     }
                     console.log($scope.passengers);
                 };
+                
+                $scope.resGetNumberOfPassengers(dataFactory.getFlight());
+                
                 $scope.addReservation = function (flight) {
 
-                    var reservationInfo = [];
-                    reservationInfo.push = (
-                            "flightID:" + flight.flightID,
-                            "numberOfSeats:" +flight.numberOfSeats,
-                            $scope.name,
-                            $scope.phone,
-                            $scope.email,
-                            "Passengers:"    +$scope.passengers
-                            );
+                    var reservationInfo;
+                    reservationInfo =
+                            "flightID: " +flight.flightID +","+
+                            "numberOfSeats: " +flight.numberOfSeats +","+
+                            $scope.resName +","+
+                            $scope.resPhone +","+
+                            $scope.resEmail +","+
+                            "Passengers: " +$scope.passengers;
 
-                    dataFactory.createReservation(reservationInfo);
+//                    dataFactory.createReservation(reservationInfo);
 
                     console.log(reservationInfo);
                 };
-                window.onload = function () {
-                    $scope.passengers.push({firstName: "", lastName: ""});
-
-                };
-
             }
         ]);
 
