@@ -9,8 +9,8 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entity.Link;
+import entity.User;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,7 +36,7 @@ public class JSONConvert {
     }
 
     public static List<String> getStringLinksFromDateNumbers(String from, String date, int numbers) {
-      
+
         List<Link> linkList = facade.getAllLinks();
         List<String> jsonLinks = new ArrayList();
         for (Link l : linkList) {
@@ -55,6 +55,14 @@ public class JSONConvert {
             json = l.getUrl() + from + "/" + to + "/" + date + "/" + gson.toJson(numbers);
         }
         return json;
+    }
+
+    public static User getUserFromJson(String js) {
+        return gson.fromJson(js, User.class);
+    }
+
+    public static String getJSONFromUser(User u) {
+        return gson.toJson(u);
     }
 
 }
