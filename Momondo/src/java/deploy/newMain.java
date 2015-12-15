@@ -12,8 +12,6 @@ import org.glassfish.jersey.servlet.internal.PersistenceUnitBinder;
 public class newMain {
 
     public static void main(String[] args) throws ParseException {
-        
 
     }
-
 }
