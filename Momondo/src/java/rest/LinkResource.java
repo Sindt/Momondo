@@ -8,23 +8,19 @@ package rest;
 import facades.JSONConvert;
 import facades.LinkFacade;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -46,7 +42,6 @@ public class LinkResource {
      */
     public LinkResource() {
     }
-
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -104,6 +99,26 @@ public class LinkResource {
 
         }
         return Response.ok(airlines).build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{id}/{nos}/{passengers}")
+    public Response addReservation(@PathParam("id") String id, @PathParam("nos") int nos, @PathParam("passengers") String passengers) {
+
+        String jsonStr = JSONConvert.getJSONFromReservation(id, nos, passengers);
+        return Response.ok().build();
+    }
+
+    @POST
+    @Path("registration")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addReservation() {
+        String jsonStr = JSONConvert.getJSONFromReservation("MCA2345", 2, "Bob,Jens");
+        System.out.println(jsonStr);
+        return Response.ok(jsonStr).build();
     }
 
 }

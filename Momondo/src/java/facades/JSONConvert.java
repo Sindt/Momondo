@@ -8,6 +8,8 @@ package facades;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import entity.Link;
 import entity.User;
 import java.util.ArrayList;
@@ -66,6 +68,27 @@ public class JSONConvert {
 
     public static String getJSONFromUser(User u) {
         return gson.toJson(u);
+    }
+
+    public static String getJSONFromReservation(String id, int nos, String passengers) {
+
+        String[] ids = passengers.split(",");
+
+        JsonObject jo = new JsonObject();
+        jo.addProperty("flightID", id);
+        jo.addProperty("numberOfSeats", nos);
+        jo.addProperty("ReserveeName", ids[0]);
+        jo.addProperty("ReservePhone", "43211234");
+        JsonArray passengerArray = new JsonArray();
+        for (String id1 : ids) {
+            JsonObject passenger1 = new JsonObject();
+            passenger1.addProperty("firstname", id1);
+            passenger1.addProperty("lastname", id1);
+            passengerArray.add(passenger1);
+        }
+        jo.add("passengers", passengerArray);
+        String jsonStr = gson.toJson(jo);
+        return jsonStr;
     }
 
 }
