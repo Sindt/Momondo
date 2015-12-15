@@ -82,7 +82,7 @@ angular.module('myApp.view6', ['ngRoute'])
                             $scope.resEmail + "," +
                             "Passengers: " + $scope.passengers;
 
-//                    dataFactory.createReservation(reservationInfo);
+                    dataFactory.addReservation(reservationInfo);
 
                     console.log(reservationInfo);
                 };

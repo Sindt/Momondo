@@ -20,6 +20,10 @@ angular.module('myApp.factories', [])
                 dataFactory.getAllFlightinfo = function (info) {
                     return $http.get(urlBase + "/" + info);
                 };
+                
+                dataFactory.addReservation = function () {
+                    return $http.post(urlBase,[]);
+                };
 
                 dataFactory.getFlight = function () {
                     return flightInfo;
