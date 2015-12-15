@@ -19,15 +19,36 @@ angular.module('myApp.view5', ['ngRoute'])
                 ];
 
                 $scope.origin = $scope.options[0];
-                
                 $scope.basePrice = dataFactory.getBasePrice();
-                
-                $scope.swapLocations = function (){
+
+                $scope.swapLocations = function () {
                     var temp;
                     temp = $scope.origin;
                     $scope.origin = $scope.destination;
                     $scope.destination = temp;
-                    
+
+                };
+
+                $scope.cityNameConverter = function (cityCode) {
+
+                    switch (cityCode) {
+                        case "CPH":
+                            cityCode = "Copenhagen";
+                            break;
+                        case "SXF":
+                            cityCode = "Berlin";
+                            break;
+                        case "CDG":
+                            cityCode = "Paris";
+                            break;
+                        case "BCN":
+                            cityCode = "Barcelona";
+                            break;
+                        case "STN":
+                            cityCode = "London";
+                            break;
+                    }
+                    return cityCode;
                 };
 
                 $scope.flightIdFormat = function (flightID) {

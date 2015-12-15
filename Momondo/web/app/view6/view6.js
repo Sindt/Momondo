@@ -9,14 +9,37 @@ angular.module('myApp.view6', ['ngRoute'])
             }])
         .controller("View6Ctrl", ["$scope", "dataFactory", function ($scope, dataFactory) {
                 $scope.dataFactory = dataFactory;
-       
-                
+
+
                 $scope.flightIdFormat = function (flightID) {
 
                     var formatedId = flightID.split("x")[0];
                     return formatedId;
 
                 };
+
+                $scope.cityNameConverter = function (cityCode) {
+
+                    switch (cityCode) {
+                        case "CPH":
+                            cityCode = "Copenhagen";
+                            break;
+                        case "SXF":
+                            cityCode = "Berlin";
+                            break;
+                        case "CDG":
+                            cityCode = "Paris";
+                            break;
+                        case "BCN":
+                            cityCode = "Barcelona";
+                            break;
+                        case "STN":
+                            cityCode = "London";
+                            break;
+                    }
+                    return cityCode;
+                };
+                
                 $scope.dateTimeFormat = function (flightDate) {
 
                     var formatedDateTime = [];
@@ -40,19 +63,24 @@ angular.module('myApp.view6', ['ngRoute'])
                     }
                     console.log($scope.passengers);
                 };
-                
-                $scope.resGetNumberOfPassengers(dataFactory.getFlight());
-                
+
+
+
+                $scope.$watch(
+                        "$scope.passengers", function () {
+                            $scope.resGetNumberOfPassengers(dataFactory.getFlight());
+                        });
+
                 $scope.addReservation = function (flight) {
 
                     var reservationInfo;
                     reservationInfo =
-                            "flightID: " +flight.flightID +","+
-                            "numberOfSeats: " +flight.numberOfSeats +","+
-                            $scope.resName +","+
-                            $scope.resPhone +","+
-                            $scope.resEmail +","+
-                            "Passengers: " +$scope.passengers;
+                            "flightID: " + flight.flightID + "," +
+                            "numberOfSeats: " + flight.numberOfSeats + "," +
+                            $scope.resName + "," +
+                            $scope.resPhone + "," +
+                            $scope.resEmail + "," +
+                            "Passengers: " + $scope.passengers;
 
 //                    dataFactory.createReservation(reservationInfo);
 

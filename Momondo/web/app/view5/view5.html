@@ -64,9 +64,12 @@
             <uib-accordion-heading>       
                 <table style="width: 100%; border-spacing: 0;">
                     <tr>
-                        <td>{{flight.origin}} &rarr; {{flight.destination}}</td>
-                        <td style="text-align: center">{{dateTimeFormat(flight.date)[0]}} - {{dateTimeFormat(flight.date)[1]}}</td>
-                        <td style="text-align: right">Total Price: {{flight.totalPrice| currency:"&#8364;"}}</td>
+                        <td style ="width: 200px">{{cityNameConverter(flight.origin)}} ({{flight.origin}})</td>
+                        <td style="width: 200px; text-align: center">{{dateTimeFormat(flight.date)[0]}} - {{dateTimeFormat(flight.date)[1]}}</td>
+                        <td style="width: 200px; text-align: right">Total Price: {{flight.totalPrice| currency:"&#8364;"}}</td>
+                    </tr>
+                    <tr>
+                        <td style ="width: 200px">{{cityNameConverter(flight.destination)}} ({{flight.destination}})</td>
                     </tr>
                 </table>    
             </uib-accordion-heading>

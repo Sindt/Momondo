@@ -38,7 +38,7 @@ ol.list > li:before {
   }*/
   
 .columnCubeBackgroundLeftTop{
-    border-radius: 20px 0px 0px 0px;
+    border-radius: 5px 0px 0px 0px;
     border-color:#000; 
     background: #BDBDBD;
     padding: 10px 20px 0px 20px;
@@ -48,7 +48,7 @@ ol.list > li:before {
 }
 
 .columnCubeBackgroundLeftBottom{
-    border-radius:0px 0px 0px 20px; 
+    border-radius:0px 0px 0px 5px; 
     border-width: 2px;
     border-color:#999999; 
     background: #BDBDBD;
@@ -81,7 +81,7 @@ ol.list > li:before {
 }
 .columnCubeBackgroundRightTop{
 
-    border-radius: 0px 20px 0px 0px;
+    border-radius: 0px 5px 0px 0px;
     border-width: thin;
     border-color:#464646; 
     background: #BDBDBD;
@@ -92,7 +92,7 @@ ol.list > li:before {
 }
 
 .columnCubeBackgroundRightBottom{
-    border-radius: 0px 0px 20px 0px;
+    border-radius: 0px 0px 5px 0px;
     border-width: thin;
     border-color:#999999; 
     background: #BDBDBD;
