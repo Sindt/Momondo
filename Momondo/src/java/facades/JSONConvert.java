@@ -35,26 +35,29 @@ public class JSONConvert {
         return gson.toJson(links);
     }
 
-    public static List<String> getStringLinksFromDateNumbers(String from, String date, int numbers) {
+    public static List<String> getListFromDateNumbers(String from, String date, int numbers) {
 
         List<Link> linkList = facade.getAllLinks();
-        List<String> jsonLinks = new ArrayList();
+        List<String> airlineLinks = new ArrayList();
         for (Link l : linkList) {
             String string = new String();
             string = l.getUrl() + from + "/" + date + "/" + gson.toJson(numbers);
             System.out.println(string);
-            jsonLinks.add(string);
+            airlineLinks.add(string);
         }
-        return jsonLinks;
+        return airlineLinks;
     }
 
-    public static String getJSONFromDateNumbers(String from, String to, String date, int numbers) {
+    public static List<String> getListFromToDateNumbers(String from, String to, String date, int numbers) {
         List<Link> linkList = facade.getAllLinks();
-        String json = "";
+        List<String> airlineLinks = new ArrayList();
         for (Link l : linkList) {
-            json = l.getUrl() + from + "/" + to + "/" + date + "/" + gson.toJson(numbers);
+            String string = new String();
+            string = l.getUrl() + from + "/" + to + "/" + date + "/" + gson.toJson(numbers);
+            System.out.println(string);
+            airlineLinks.add(string);
         }
-        return json;
+        return airlineLinks;
     }
 
     public static User getUserFromJson(String js) {

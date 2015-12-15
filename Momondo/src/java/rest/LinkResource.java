@@ -47,12 +47,13 @@ public class LinkResource {
     public LinkResource() {
     }
 
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{from}/{date}/{numbers}")
     public Response getJson(@PathParam("from") String from, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
         Client client = ClientBuilder.newClient();
-        List<String> jsonLinks = JSONConvert.getStringLinksFromDateNumbers(from, date, numbers);
+        List<String> jsonLinks = JSONConvert.getListFromDateNumbers(from, date, numbers);
         String links = "{\"airlines\":[";
         String airlines = "";
         Response response = null;
@@ -76,42 +77,33 @@ public class LinkResource {
         return Response.ok(airlines).build();
     }
 
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Path("{from}/{date}/{numbers}")
-//    public Response getJson(@PathParam("from") String from, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
-//        URL url;
-//        String link = "";
-//        HttpURLConnection request = null;
-//        JSONObject mergedJSON = new JSONObject();
-//        try {
-//            link = JSONConvert.getStringLinksFromDateNumbers(from, date, numbers);
-//            url = new URL(link);
-//            request = (HttpURLConnection) url.openConnection();
-//            request.connect();
-//
-//        } catch (Exception ex) {
-//            Logger.getLogger(LinkResource.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        return Response.ok(request.getContent()).build();
-//    }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{from}/{to}/{date}/{numbers}")
     public Response getJson(@PathParam("from") String from, @PathParam("to") String to, @PathParam("date") String date, @PathParam("numbers") int numbers) throws IOException {
-        URL url;
-        HttpURLConnection request = null;
-        try {
-            url = new URL(JSONConvert.getJSONFromDateNumbers(from, to, date, numbers));
-            request = (HttpURLConnection) url.openConnection();
-            request.connect();
+        Client client = ClientBuilder.newClient();
+        List<String> jsonLinks = JSONConvert.getListFromToDateNumbers(from, to, date, numbers);
+        String links = "{\"airlines\":[";
+        String airlines = "";
+        Response response = null;
 
-        } catch (Exception ex) {
-            Logger.getLogger(LinkResource.class
-                    .getName()).log(Level.SEVERE, null, ex);
+        try {
+
+            for (String l : jsonLinks) {
+                WebTarget webTarget = client.target(l);
+                Invocation invocation = webTarget.request(MediaType.APPLICATION_JSON).buildGet();
+                response = invocation.invoke();
+                System.out.println(response);
+                links += response.readEntity(String.class) + ",";
+            }
+            airlines = links.substring(0, links.length() - 1);
+            airlines += "]}";
+            System.out.println(airlines);
+
+        } catch (Exception e) {
+
         }
-        return Response.ok(request.getContent()).build();
+        return Response.ok(airlines).build();
     }
 
 }
