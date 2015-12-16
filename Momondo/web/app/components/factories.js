@@ -19,9 +19,9 @@ angular.module('myApp.factories', [])
                 dataFactory.getAllFlightinfo = function (info) {
                     return $http.get(urlBase + "/" + info);
                 };
-                
-                dataFactory.addReservation = function () {
-                    return $http.post(urlBase,[]);
+
+                dataFactory.addReservation = function (info) {
+                    return $http.post(urlBase + "/" + info, []);
                 };
 
                 dataFactory.getFlight = function () {
@@ -35,7 +35,7 @@ angular.module('myApp.factories', [])
                 dataFactory.createResObject = function (info) {
                     ResObj.push(info);
                 };
-                
+
                 return dataFactory;
             }]);
 

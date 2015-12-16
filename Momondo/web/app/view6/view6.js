@@ -39,7 +39,7 @@ angular.module('myApp.view6', ['ngRoute'])
                     }
                     return cityCode;
                 };
-                
+
                 $scope.dateTimeFormat = function (flightDate) {
 
                     var formatedDateTime = [];
@@ -73,15 +73,18 @@ angular.module('myApp.view6', ['ngRoute'])
 
                 $scope.addReservation = function (flight) {
 
-                    var reservationInfo;
-                    reservationInfo =
-                            "flightID: " + flight.flightID + "," +
-                            "numberOfSeats: " + flight.numberOfSeats + "," +
-                            "Passengers: " + $scope.passengers;
+                    var info = flight.flightID + "/" + flight.numberOfSeats;
+                    console.log(info)
+                    dataFactory.addReservation(info)
+                            .success(function (response) {
+                                console.log(response);
+                                $scope.json = response;
+                            })
+                            .error(function (error) {
+                                $scope.status = error + " - Error";
+                                console.log("error = " + error)
+                            });
 
-                    dataFactory.addReservation(reservationInfo);
-
-                    console.log(reservationInfo);
                 };
             }
         ]);

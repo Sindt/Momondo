@@ -84,7 +84,7 @@ public class JSONConvert {
         for (String id1 : ids) {
             JsonObject passenger1 = new JsonObject();
             passenger1.addProperty("firstName", id1);
-            passenger1.addProperty("lastName", id1);
+            passenger1.addProperty("lastName", id1 + "en");
             passengerArray.add(passenger1);
         }
         jo.add("Passengers", passengerArray);

@@ -107,18 +107,34 @@ public class LinkResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{id}/{nos}/{passengers}")
-    public Response addReservation(@PathParam("id") String id, @PathParam("nos") int nos, @PathParam("passengers") String passengers) {
+    public Response addReservation() {
+        String jsonStr = JSONConvert.getJSONFromReservation("COL3257x100x2016-01-14T21:30:00.000Z", 2, "Bob,Jens");
+        System.out.println(jsonStr);
+        Client client = ClientBuilder.newClient();
+        List<Link> allLinks = facade.getAllLinks();
+        String links = "";
+        Response response = null;
+        try {
+            for (Link l : allLinks) {
+                WebTarget webTarget = client.target(l.getUrl() + "flightreservation");
+                System.out.println(webTarget);
+                Invocation invocation = webTarget.request().buildPost(Entity.entity(jsonStr, MediaType.APPLICATION_JSON));
+                response = invocation.invoke();
+                System.out.println(response);
+            }
+            System.out.println(links);
+        } catch (Exception e) {
+        }
 
-        String jsonStr = JSONConvert.getJSONFromReservation(id, nos, passengers);
-        return Response.ok().build();
+        return Response.ok(response.readEntity(String.class)).build();
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addReservation() {
-        String jsonStr = JSONConvert.getJSONFromReservation("COL3257x100x2016-01-14T21:30:00.000Z", 2, "Bob,Jens");
+    @Path("{id}/{nos}")
+    public Response addReservation(@PathParam("id") String id, @PathParam("nos") int nos) {
+        String jsonStr = JSONConvert.getJSONFromReservation(id, nos, "Mads,Jens");
         System.out.println(jsonStr);
         Client client = ClientBuilder.newClient();
         List<Link> allLinks = facade.getAllLinks();
