@@ -7,6 +7,7 @@ angular.module('myApp.factories', [])
                 var urlBase = 'api/link';
                 var dataFactory = {};
                 var flightInfo = [];
+                var ResObj = [];
                 var basePrice = 0;
 
                 dataFactory.addItem = function (item) {
@@ -31,6 +32,10 @@ angular.module('myApp.factories', [])
                     return basePrice;
                 };
 
+                dataFactory.createResObject = function (info) {
+                    ResObj.push(info);
+                };
+                
                 return dataFactory;
             }]);
 

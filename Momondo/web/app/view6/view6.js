@@ -77,9 +77,6 @@ angular.module('myApp.view6', ['ngRoute'])
                     reservationInfo =
                             "flightID: " + flight.flightID + "," +
                             "numberOfSeats: " + flight.numberOfSeats + "," +
-                            $scope.resName + "," +
-                            $scope.resPhone + "," +
-                            $scope.resEmail + "," +
                             "Passengers: " + $scope.passengers;
 
                     dataFactory.addReservation(reservationInfo);

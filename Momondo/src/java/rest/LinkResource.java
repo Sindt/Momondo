@@ -118,9 +118,8 @@ public class LinkResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addReservation() {
-        String jsonStr = JSONConvert.getJSONFromReservation("MCA2345", 2, "Bob,Jens");
+        String jsonStr = JSONConvert.getJSONFromReservation("COL3257x100x2016-01-14T21:30:00.000Z", 2, "Bob,Jens");
         System.out.println(jsonStr);
-        JsonObject jo = new JsonObject();
         Client client = ClientBuilder.newClient();
         List<Link> allLinks = facade.getAllLinks();
         String links = "";
@@ -128,7 +127,8 @@ public class LinkResource {
         try {
             for (Link l : allLinks) {
                 WebTarget webTarget = client.target(l.getUrl() + "flightreservation");
-                Invocation invocation = webTarget.request(MediaType.APPLICATION_JSON).buildPost(Entity.entity(jsonStr, MediaType.APPLICATION_JSON));
+                System.out.println(webTarget);
+                Invocation invocation = webTarget.request().buildPost(Entity.entity(jsonStr, MediaType.APPLICATION_JSON));
                 response = invocation.invoke();
                 System.out.println(response);
             }
@@ -136,7 +136,7 @@ public class LinkResource {
         } catch (Exception e) {
         }
 
-        return Response.ok().build();
+        return Response.ok(response.readEntity(String.class)).build();
     }
 
 }

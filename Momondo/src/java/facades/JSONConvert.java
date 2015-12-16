@@ -79,14 +79,15 @@ public class JSONConvert {
         jo.addProperty("numberOfSeats", nos);
         jo.addProperty("ReserveeName", ids[0]);
         jo.addProperty("ReservePhone", "43211234");
+        jo.addProperty("ReserveeEmail", ids[0] + "@mail.com");
         JsonArray passengerArray = new JsonArray();
         for (String id1 : ids) {
             JsonObject passenger1 = new JsonObject();
-            passenger1.addProperty("firstname", id1);
-            passenger1.addProperty("lastname", id1);
+            passenger1.addProperty("firstName", id1);
+            passenger1.addProperty("lastName", id1);
             passengerArray.add(passenger1);
         }
-        jo.add("passengers", passengerArray);
+        jo.add("Passengers", passengerArray);
         String jsonStr = gson.toJson(jo);
         return jsonStr;
     }
