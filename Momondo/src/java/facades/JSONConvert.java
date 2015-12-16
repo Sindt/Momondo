@@ -43,7 +43,7 @@ public class JSONConvert {
         List<String> airlineLinks = new ArrayList();
         for (Link l : linkList) {
             String string = new String();
-            string = l.getUrl() + from + "/" + date + "/" + gson.toJson(numbers);
+            string = l.getUrl() + "flightinfo/" + from + "/" + date + "/" + gson.toJson(numbers);
             System.out.println(string);
             airlineLinks.add(string);
         }
@@ -55,7 +55,7 @@ public class JSONConvert {
         List<String> airlineLinks = new ArrayList();
         for (Link l : linkList) {
             String string = new String();
-            string = l.getUrl() + from + "/" + to + "/" + date + "/" + gson.toJson(numbers);
+            string = l.getUrl() + "flightinfo/" + from + "/" + to + "/" + date + "/" + gson.toJson(numbers);
             System.out.println(string);
             airlineLinks.add(string);
         }

@@ -5,6 +5,8 @@
  */
 package rest;
 
+import com.google.gson.JsonObject;
+import entity.Link;
 import facades.JSONConvert;
 import facades.LinkFacade;
 import java.io.IOException;
@@ -19,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -117,7 +120,23 @@ public class LinkResource {
     public Response addReservation() {
         String jsonStr = JSONConvert.getJSONFromReservation("MCA2345", 2, "Bob,Jens");
         System.out.println(jsonStr);
-        return Response.ok(jsonStr).build();
+        JsonObject jo = new JsonObject();
+        Client client = ClientBuilder.newClient();
+        List<Link> allLinks = facade.getAllLinks();
+        String links = "";
+        Response response = null;
+        try {
+            for (Link l : allLinks) {
+                WebTarget webTarget = client.target(l.getUrl() + "flightreservation");
+                Invocation invocation = webTarget.request(MediaType.APPLICATION_JSON).buildPost(Entity.entity(jsonStr, MediaType.APPLICATION_JSON));
+                response = invocation.invoke();
+                System.out.println(response);
+            }
+            System.out.println(links);
+        } catch (Exception e) {
+        }
+
+        return Response.ok().build();
     }
 
 }
