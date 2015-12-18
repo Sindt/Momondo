@@ -49,7 +49,7 @@ public class LinkFacadeTest {
     @Test
     public void testGetLink() {
         System.out.println("getLink");
-        Long id = 1L;
+        Long id = 9L;
         LinkFacade instance = new LinkFacade();
         Link result = instance.getLink(id);
         System.out.println(result.getUrl());

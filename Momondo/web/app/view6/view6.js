@@ -77,6 +77,7 @@ angular.module('myApp.view6', ['ngRoute'])
                     console.log(info)
                     dataFactory.addReservation(info)
                             .success(function (response) {
+                                alert("Du har nu booket følgende: \n " + response.flightID + "\n" + response.Origin + " - " + response.Destination + "\n Antal passagere: " +  response.numberOfSeats);
                                 console.log(response);
                                 $scope.json = response;
                             })

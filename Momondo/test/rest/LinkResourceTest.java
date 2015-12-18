@@ -58,24 +58,44 @@ public class LinkResourceTest {
         given()
                 .contentType(MediaType.APPLICATION_JSON)
                 .when()
-                .get("/link")
+                .get("/link/BCN/2016-06-01T00:00:00.000Z/2")
                 .then().
                 statusCode(200);
     }
 
-  
     /**
      * Test of getJsonToAndFrom method, of class LinkResource.
      */
+    @Test
+    public void testGetJsonFrom() throws Exception {
+
+        given()
+                .contentType(MediaType.APPLICATION_JSON)
+                .when()
+                .get("/link/CPH/2016-01-01T00:00:00.000Z/2")
+                .then().
+                statusCode(200);
+    }
+
     @Test
     public void testGetJsonToAndFrom() throws Exception {
 
         given()
                 .contentType(MediaType.APPLICATION_JSON)
                 .when()
-                .get("/link/toandfrom")
+                .get("/link/CPH/SXF/2016-01-01T00:00:00.000Z/2")
                 .then().
                 statusCode(200);
     }
 
+    @Test
+    public void testGetJsonToNoAvalible() throws Exception {
+
+        given()
+                .contentType(MediaType.APPLICATION_JSON)
+                .when()
+                .get("/link/BCN/2016-01-01T00:00:00.000Z/2")
+                .then()
+                .statusCode(200);
+    }
 }
