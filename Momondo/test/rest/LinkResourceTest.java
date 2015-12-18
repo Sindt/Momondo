@@ -63,41 +63,7 @@ public class LinkResourceTest {
                 statusCode(200);
     }
 
-    /**
-     * Test of getJson method, of class LinkResource.
-     */
-    @Ignore
-    public void testGetJson_3args() throws Exception {
-        System.out.println("getJson");
-        String from = "";
-        String date = null;
-        int numbers = 0;
-        LinkResource instance = new LinkResource();
-        Response expResult = null;
-        Response result = instance.getJson(from, date, numbers);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getJson method, of class LinkResource.
-     */
-    @Ignore
-    public void testGetJson_4args() throws Exception {
-        System.out.println("getJson");
-        String from = "";
-        String to = "";
-        String date = "";
-        int numbers = 0;
-        LinkResource instance = new LinkResource();
-        Response expResult = null;
-        Response result = instance.getJson(from, to, date, numbers);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+  
     /**
      * Test of getJsonToAndFrom method, of class LinkResource.
      */

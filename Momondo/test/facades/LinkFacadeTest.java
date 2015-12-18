@@ -42,15 +42,6 @@ public class LinkFacadeTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of addLink method, of class LinkFacade.
-     */
-    @Ignore
-    public void testAddLink() {
-        System.out.println("addLink");
-        Link expResult = null;
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getLink method, of class LinkFacade.
